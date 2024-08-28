@@ -10,7 +10,7 @@
  console.log(firstName);
  console.log(firstName);
 
- //Variable name conventions
+ ---- Variable name conventions -----
 
  let jonas_matilda = "JM" // dont use & in variable name
  let $function = 27; // dont use reserved words (for example : new, function...)
@@ -18,7 +18,8 @@
  let PI = 3.1415; // only constant variables can be upper case
  let myFirstJob = "programmer"
  let myCurrentJob = "teacher" // set your variables clear, not use job1, job2 vs
- */
+ 
+ ---- Data Types -----
 
  let javascriptIsFun = true;
  console.log(javascriptIsFun);
@@ -39,3 +40,18 @@
  console.log(typeof year); // number
 
  console.log(typeof null); // this return -> object but it is a bug. It should return 'null'. like undefined.
+
+ ---- let, const and var ----
+
+ let age = 30;
+ age = 31; // we can reassigning a value to a variable. mutable.
+
+ const birthYear = 1991;
+ birthYear = 1990; // Uncaught TypeError: Assignment to constant varible. We can NOT reassign. inmutable.
+
+ const job; // Uncaught SyntaxError: Missing initializer in const declaration. we can NOT use without assigning a value.
+
+ var job = 'programmer';
+ job = 'teacher';
+
+  */
