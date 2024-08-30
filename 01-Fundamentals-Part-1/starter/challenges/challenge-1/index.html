@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const marksFirstWeight = 78;
+        const marksSecondWeight = 95;
+        const marksFirstHeight = 1.69;
+        const marksSecondHeight = 1.88;
+
+        const johnsFirstWeight = 92;
+        const johnsSecondWeight = 85;
+        const johnsFirstHeight = 1.95;
+        const johnsSecondHeight = 1.76;
+
+        let marksFirstBMI = marksFirstWeight / (marksFirstHeight ** 2);
+        let marksSecondBMI = marksSecondWeight / (marksSecondHeight ** 2);
+
+        let johnsFirstBMI = johnsFirstWeight / (johnsFirstHeight ** 2);
+        let johnsSecondBMI = johnsSecondWeight / (johnsSecondHeight ** 2);
+
+        console.log(`Marks First BMI is ${marksFirstBMI}`); // 27.30
+        console.log(`Marks Second BMI is ${marksSecondBMI}`); // 26.87
+        console.log(`Johns First BMI is ${johnsFirstBMI}`); // 24.19
+        console.log(`Johns Second BMI is ${johnsSecondBMI}`); // 27.44
+
+        let markHigherBMI = marksFirstBMI > johnsFirstBMI;
+        let johnHigherBMI = johnsSecondBMI > marksSecondBMI;
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
