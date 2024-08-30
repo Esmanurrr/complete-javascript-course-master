@@ -83,5 +83,13 @@
 
  console.log(now - 1991 > now - 2018); // firstly math operators then comparison operators will run
 
+ ---- Operator Presedence ----
+
+ let x,y;
+ x = y = 25 - 10 - 5;
+ console.log(x,y) // 10 10 , firstly the math then assign to variables
+
+ const averageAge = (ageJonas + ageSarah) / 2; // if we dont use parantesis then result will be wrong because of presedence
+
   */
 
