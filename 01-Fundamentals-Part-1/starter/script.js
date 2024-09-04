@@ -93,3 +93,18 @@
 
   */
 
+ const firstName = 'Esmanur';
+ const job = 'engineer';
+ const birthYear = 2000;
+ const year = 2024;
+
+ const esma = `I'm  ${firstName} a ${year - birthYear} year old ${job} `;
+ console.log(esma);
+
+console.log('String with \n\
+    multiple \n\
+    lines');
+
+console.log(`String
+    multiple
+    lines with backtick`);
