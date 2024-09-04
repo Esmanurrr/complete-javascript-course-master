@@ -91,7 +91,7 @@
 
  const averageAge = (ageJonas + ageSarah) / 2; // if we dont use parantesis then result will be wrong because of presedence
 
-  */
+ ----- Strings and Template Literals ----- 
 
  const firstName = 'Esmanur';
  const job = 'engineer';
@@ -108,3 +108,24 @@ console.log('String with \n\
 console.log(`String
     multiple
     lines with backtick`);
+
+*/
+
+const age = 15;
+const isOldEnough = age >= 18;
+
+if(isOldEnough){
+    console.log('Sarah can start driving license 👍🚗'); // windows + . hepsine aynı anda bas
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} year :) `); // windows + . hepsine aynı anda bas
+}
+
+const birthYear = 1991;
+
+let century;
+if(birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
