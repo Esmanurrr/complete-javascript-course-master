@@ -151,7 +151,6 @@ console.log('23' * '2'); // return 46
 console.log('23' / '2'); // return 11.5
 
 --- Excercise ---
-*/
 
 let n = '1' + 1; //11
 n = n - 1;
@@ -162,3 +161,30 @@ console.log(a); // 95
 
 let b = '10' - '4' - '3' - 2 + '5';
 console.log(b); // 1+5 => 15
+
+
+
+// 5 falsy values: 0, '', undefined, null, NaN
+
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean('Jonas')); // true
+console.log(Boolean({})); // true
+console.log(Boolean('')); // false
+
+
+const money = 0;
+if(money){ // false
+    console.log("Don't spend it all ");
+}else { // returned this
+    console.log("You should get a job");
+}
+
+let height;
+if(height){ // this is false because undefined is falsy value
+    console.log('YAY Height is defined');
+} else { // returned this
+    console.log('Height is undefined')
+}
+
+*/
