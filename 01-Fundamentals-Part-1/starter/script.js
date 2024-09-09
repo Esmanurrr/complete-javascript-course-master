@@ -109,7 +109,7 @@ console.log(`String
     multiple
     lines with backtick`);
 
-*/
+
 
 const age = 15;
 const isOldEnough = age >= 18;
@@ -129,3 +129,36 @@ if(birthYear <= 2000) {
 } else {
     century = 21;
 }
+
+----- Type Conversion -----
+
+const inputYear = '1991';
+console.log(Number(inputYear));
+console.log(Number(inputYear) + 18); // 2009
+console.log(Number('Jonas')); // NaN
+console.log(typeof NaN); // number
+
+console.log(String(23), 23); // 23 (but string), 23
+
+
+---- Type Coercion ---- 
+
+
+console.log(' I am ' + 23 + ' years old '); //plus operation makes 23 to string
+console.log('23' - '10' - 3); // return 10
+console.log('23' + '10' + 3); // return 23103
+console.log('23' * '2'); // return 46
+console.log('23' / '2'); // return 11.5
+
+--- Excercise ---
+*/
+
+let n = '1' + 1; //11
+n = n - 1;
+console.log(n); // 10
+
+let a = 2 + 3 + 4 + '5';
+console.log(a); // 95
+
+let b = '10' - '4' - '3' - 2 + '5';
+console.log(b); // 1+5 => 15
