@@ -187,7 +187,7 @@ if(height){ // this is false because undefined is falsy value
     console.log('Height is undefined')
 }
 
-*/
+
 
 const age = 18; // now the both of them will return but when age equal to '18' then just second one returned
 if(age === 18) console.log('You just became an adult (strict)');
@@ -210,3 +210,21 @@ if(favourite === 23){ // 23 === 23
 }
 
 if(favourite !== 23) console.log('Why not 23?');
+
+*/
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const isTired = false; // C
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if(hasDriversLicense && hasGoodVision && !isTired){
+    console.log('Sarah is able to drive');
+}else {
+    console.log('Someone else should drive...');
+}
