@@ -227,7 +227,7 @@ if(hasDriversLicense && hasGoodVision && !isTired){
     console.log('Someone else should drive...');
 }
 
-*/
+---- Switch Statement ----
 
 const day = 'monday';
 
@@ -253,3 +253,27 @@ switch(day) {
     default:
         console.log('Not a valid day!');
 }
+
+---- Statement and expressions -----
+
+Expression produces a value => 
+    for example, 3 + 4, 
+    1991 (yes that is only expression even if it is a number), 
+    true && false && !false
+
+But statements => bigger piece of code that is executed and which does not produce a value on itself, not produce a value
+
+Declaration = complete sentence
+Expression = word that make up the sentences
+Statement = our whole programs as a sequence of actions. and these actions are statements.
+
+
+
+if(23 > 10){
+    const str = '23 is bigger'; // string is expression but str is a statement 
+}
+
+const me = "Esma";
+console.log(`I'm ${2037 - 1991} years old ${me}`); // the purple ones are expression but we cannot use in if or something statements
+
+*/
