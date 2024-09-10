@@ -276,4 +276,25 @@ if(23 > 10){
 const me = "Esma";
 console.log(`I'm ${2037 - 1991} years old ${me}`); // the purple ones are expression but we cannot use in if or something statements
 
+
+---- The Conditional (Ternary) Operator -----
+
+Operator produces a value, so it is also expression
+
+const age = 18;
+age >= 18 ? console.log("I like to drink tea") : console.log("I like to drink water"); // expression ? true : false 
+
+const drink = age >= 18 ? 'tea' : 'water';
+console.log(drink);
+
+let drink2;
+if (age >= 18) {
+    drink2 = 'tea';
+} else {
+    drink2 = 'water';
+}
+console.log(drink2);
+
+console.log(`I like to drink ${age >= 18 ? 'tea' : 'water'}`)
+
 */
