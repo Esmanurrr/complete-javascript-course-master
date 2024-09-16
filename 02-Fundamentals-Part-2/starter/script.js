@@ -16,24 +16,44 @@
 
 // --- Functions ---
 
-function logger(){
-    console.log("My name is Esmanur");
+// function logger(){
+//     console.log("My name is Esmanur");
+// }
+
+// //calling, running or invoking function
+// logger();
+// logger();
+// logger();
+
+// function fruitProcessor(apples, oranges){
+//     const juice = `Juice with ${apples} apples and ${oranges} oranges`;
+//     return juice;
+// }
+
+// const appleJuice = fruitProcessor(5, 0); // sadece bunu çalıştırdığımızda kendi içerisinde bu sonucu döndü ama biz onu konsola yazdırmadık. 
+// console.log(appleJuice);
+
+// const appleOrangeJuice = fruitProcessor(2,4);
+// console.log(appleOrangeJuice);
+
+// const num = Number('23');
+
+// --- Function Declarations vs Expressions ---
+
+// we call function declaration to above functions
+
+//this is function declaration 
+// we can call before declaration in function declaration. (hoisting)
+function calcAge1(birthYear) {
+    return 2030 - birthYear;
 }
 
-//calling, running or invoking function
-logger();
-logger();
-logger();
+const age1 = calcAge1(2000);
 
-function fruitProcessor(apples, oranges){
-    const juice = `Juice with ${apples} apples and ${oranges} oranges`;
-    return juice;
+// function expression - expression produces a value, and this value stored to a variable
+const calcAge2 = function (birthYear) {
+    return 2030 - birthYear;
 }
 
-const appleJuice = fruitProcessor(5, 0); // sadece bunu çalıştırdığımızda kendi içerisinde bu sonucu döndü ama biz onu konsola yazdırmadık. 
-console.log(appleJuice);
-
-const appleOrangeJuice = fruitProcessor(2,4);
-console.log(appleOrangeJuice);
-
-const num = Number('23');
+const age2 = calcAge2(2000);
+console.log(age1, age2);
