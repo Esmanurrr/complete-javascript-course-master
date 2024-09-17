@@ -60,17 +60,34 @@
 
 // --- Arrow Function ---  added in ES6 
 
-const calcAge3 = birthYear => 2037 - birthYear;
-const age3 = calcAge3(2000);
-console.log(age3);
+// const calcAge3 = birthYear => 2037 - birthYear;
+// const age3 = calcAge3(2000);
+// console.log(age3);
 
 
-const yearsUntilRetirement = (birthYear, firstName) => {
-    const age = 2037 - birthYear;
-    const retirement = 65 - age;
-    // return retirement;
-    return `${firstName} retires in ${retirement} years`;
+// const yearsUntilRetirement = (birthYear, firstName) => {
+//     const age = 2037 - birthYear;
+//     const retirement = 65 - age;
+//     // return retirement;
+//     return `${firstName} retires in ${retirement} years`;
+// }
+
+// console.log(yearsUntilRetirement(2000, "Esmanur"));
+// console.log(yearsUntilRetirement(1990, "Zeliha"));
+
+// --- Functions calling other functions ---
+
+const cutPieces = function (fruit){
+    return fruit *4;
 }
 
-console.log(yearsUntilRetirement(2000, "Esmanur"));
-console.log(yearsUntilRetirement(1990, "Zeliha"));
+function fruitProcessor(apples, oranges){
+
+    const applePieces = cutPieces(apples);
+    const orangePieces = cutPieces(oranges);
+
+    const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges`;
+    return juice;
+}
+
+console.log(fruitProcessor(2, 3));
