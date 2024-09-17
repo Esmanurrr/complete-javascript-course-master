@@ -10,17 +10,33 @@
 
 // console.log(turkey, korea, norvey);
 
-function percentageOfWorld1(population){
-    const worldPop = 7900;
-    return ((population / worldPop) * 100).toFixed(1);
-}
+// --- Functions declarations and expressions --- 
 
-percentageOfWorld1(85);
-percentageOfWorld1(5);
-percentageOfWorld1(1441);
+// function percentageOfWorld1(population){
+//     const worldPop = 7900;
+//     return ((population / worldPop) * 100).toFixed(1);
+// }
+
+// percentageOfWorld1(85);
+// percentageOfWorld1(5);
+// percentageOfWorld1(1441);
 
 
-const percentageOfWorld2 = function(population){
+// const percentageOfWorld2 = function(population){
+//     const worldPop = 7900;
+//     return ((population / worldPop) * 100).toFixed(1);
+// }
+
+// const turkey = percentageOfWorld2(85);
+// const norvey = percentageOfWorld2(5);
+// const china = percentageOfWorld2(1441);
+
+
+// console.log(turkey, norvey, china);
+
+// --- Arrow Functions ---
+
+const percentageOfWorld3 = (population) => {
     const worldPop = 7900;
     return ((population / worldPop) * 100).toFixed(1);
 }
