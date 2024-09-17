@@ -44,16 +44,33 @@
 
 //this is function declaration 
 // we can call before declaration in function declaration. (hoisting)
-function calcAge1(birthYear) {
-    return 2030 - birthYear;
-}
+// function calcAge1(birthYear) {
+//     return 2030 - birthYear;
+// }
 
-const age1 = calcAge1(2000);
+// const age1 = calcAge1(2000);
 
 // function expression - expression produces a value, and this value stored to a variable
-const calcAge2 = function (birthYear) {
-    return 2030 - birthYear;
+// const calcAge2 = function (birthYear) {
+//     return 2030 - birthYear;
+// }
+
+// const age2 = calcAge2(2000);
+// console.log(age1, age2);
+
+// --- Arrow Function ---  added in ES6 
+
+const calcAge3 = birthYear => 2037 - birthYear;
+const age3 = calcAge3(2000);
+console.log(age3);
+
+
+const yearsUntilRetirement = (birthYear, firstName) => {
+    const age = 2037 - birthYear;
+    const retirement = 65 - age;
+    // return retirement;
+    return `${firstName} retires in ${retirement} years`;
 }
 
-const age2 = calcAge2(2000);
-console.log(age1, age2);
+console.log(yearsUntilRetirement(2000, "Esmanur"));
+console.log(yearsUntilRetirement(1990, "Zeliha"));
