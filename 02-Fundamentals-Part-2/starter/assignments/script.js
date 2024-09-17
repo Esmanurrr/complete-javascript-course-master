@@ -36,14 +36,29 @@
 
 // --- Arrow Functions ---
 
+// const percentageOfWorld3 = (population) => {
+//     const worldPop = 7900;
+//     return ((population / worldPop) * 100).toFixed(1);
+// }
+
+// const turkey = percentageOfWorld2(85);
+// const norvey = percentageOfWorld2(5);
+// const china = percentageOfWorld2(1441);
+
+
+// console.log(turkey, norvey, china);
+
+// --- Functions calling other functions ---
+
 const percentageOfWorld3 = (population) => {
     const worldPop = 7900;
     return ((population / worldPop) * 100).toFixed(1);
 }
 
-const turkey = percentageOfWorld2(85);
-const norvey = percentageOfWorld2(5);
-const china = percentageOfWorld2(1441);
+const describePopulation = (country, population) => {
+    return `${country} has ${population} million people, which is about ${percentageOfWorld3(population)}% of the world`
+}
 
-
-console.log(turkey, norvey, china);
+console.log(describePopulation("Turkey", 85));
+console.log(describePopulation("Norvey", 5));
+console.log(describePopulation("China", 1441));
