@@ -150,34 +150,44 @@
 
 // --- Basic Array Operations ---
 
-const friends = ['Micheal', 'Steven', 'Peter'];
+// const friends = ['Micheal', 'Steven', 'Peter'];
 
 // Add elements
-const newLength = friends.push('Jay'); // added tp end
+// const newLength = friends.push('Jay'); // added tp end
 
-console.log(friends);
-console.log(newLength);
+// console.log(friends);
+// console.log(newLength);
 
-friends.unshift('John'); // added to index of 0
-console.log(friends);
+// friends.unshift('John'); // added to index of 0
+// console.log(friends);
 
 // Remove elements
-friends.pop(); 
-const popped = friends.pop();
-console.log(popped);
+// friends.pop(); 
+// const popped = friends.pop();
+// console.log(popped);
 
-friends.shift(); // remove index of 0
-console.log(friends);
+// friends.shift(); // remove index of 0
+// console.log(friends);
 
-console.log(friends.indexOf('Steven')); // 1
-console.log(friends.indexOf('Bob')); // -1  -> There is no Bob
+// console.log(friends.indexOf('Steven')); // 1
+// console.log(friends.indexOf('Bob')); // -1  -> There is no Bob
 
-friends.push(23);
-console.log(friends.includes('Steven')); // returned true
-console.log(friends.includes('Bob')); // returned false
-console.log(friends.includes(23)); // returned true
-console.log(friends.includes('23')); // returned false because of strict type coercion
+// friends.push(23);
+// console.log(friends.includes('Steven')); // returned true
+// console.log(friends.includes('Bob')); // returned false
+// console.log(friends.includes(23)); // returned true
+// console.log(friends.includes('23')); // returned false because of strict type coercion
 
-if(friends.includes('Steven')) {
-    console.log('You have a friend called Steven')
-}
+// if(friends.includes('Steven')) {
+//     console.log('You have a friend called Steven')
+// }
+
+// --- Introduction to Objects ---
+
+const esma = {
+    firstName: 'Esmanur',
+    lastName: 'Mazlum',
+    age: 23,
+    job: 'engineer',
+    friends: ['zeliha', 'emine', 'serkan']
+};
