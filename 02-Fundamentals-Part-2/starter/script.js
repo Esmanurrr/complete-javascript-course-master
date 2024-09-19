@@ -184,6 +184,16 @@
 
 // --- Introduction to Objects ---
 
+// const esma = {
+//     firstName: 'Esmanur',
+//     lastName: 'Mazlum',
+//     age: 23,
+//     job: 'engineer',
+//     friends: ['zeliha', 'emine', 'serkan']
+// };
+
+// --- Dot vs. Bracket Notation ---
+
 const esma = {
     firstName: 'Esmanur',
     lastName: 'Mazlum',
@@ -191,3 +201,32 @@ const esma = {
     job: 'engineer',
     friends: ['zeliha', 'emine', 'serkan']
 };
+
+console.log(esma);
+
+console.log(esma.lastName);
+console.log(esma['lastName']); // the difference is that we can add more expression in bracket notation
+
+const nameKey = 'Name';
+console.log(esma['first' + nameKey]); // firstName --> return Esmanur
+console.log(esma['last' + nameKey]); // lastName --> return Mazlum
+
+
+const interestedIn = prompt('What do you want to know about esma? Choose between firstName, lastName, age, job or friends');
+//console.log(esma[interestedIn]); we can not use esma.interestedIn because esma has not property of interestedIn, in bracket notation we can get the value of expression
+
+if(esma[interestedIn]) {
+    console.log(esma[interestedIn]);
+} else {
+    console.log('wrong request! Choose between firstName, lastName, age, job or friends');
+}
+
+// we can add value and key into object
+esma.location = 'Turkey';
+esma['instagram'] = '@ufaklikkesmaa';
+console.log(esma);
+
+// Challenge
+// "Esma has 3 friends, and her best friend is called zeliha"
+
+console.log(`${esma.firstName} has ${esma.friends.length} friends, and her best friend is called ${esma.friends[0]}`);
