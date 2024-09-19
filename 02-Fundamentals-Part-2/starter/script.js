@@ -114,36 +114,70 @@
 
 // --- Arrays ---
 
-const friend1 = 'Micheal';
-const friend2 = 'Steven';
-const friend3 = 'Peter';
+// const friend1 = 'Micheal';
+// const friend2 = 'Steven';
+// const friend3 = 'Peter';
 
-const friends = ['Micheal', 'Steven', 'Peter'];
-console.log(friends);
+// const friends = ['Micheal', 'Steven', 'Peter'];
+// console.log(friends);
 
 // const years = new Array(1991, 1984, 2008, 2020);
 
-console.log(friends[0]); // Micheal
-console.log(friends[2]); // Peter
+// console.log(friends[0]); // Micheal
+// console.log(friends[2]); // Peter
 
-console.log(friends.length); // 3
-console.log(friends[friends.length - 1]); // Peter
+// console.log(friends.length); // 3
+// console.log(friends[friends.length - 1]); // Peter
 
-friends[2] = 'Jay';
+// friends[2] = 'Jay';
+// console.log(friends);
+
+// const firstName = 'jonas'
+// const jonas = [firstName, 'schmedtmann', 2037 - 1991, 'teacher', friends];
+// console.log(jonas);
+
+// // Excercise
+// const calcAge = (birthYear) => 2037 - birthYear;
+
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+// console.log(age1, age2, age3);
+
+// const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years[years.length - 1]])];
+
+// --- Basic Array Operations ---
+
+const friends = ['Micheal', 'Steven', 'Peter'];
+
+// Add elements
+const newLength = friends.push('Jay'); // added tp end
+
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('John'); // added to index of 0
 console.log(friends);
 
-const firstName = 'jonas'
-const jonas = [firstName, 'schmedtmann', 2037 - 1991, 'teacher', friends];
-console.log(jonas);
+// Remove elements
+friends.pop(); 
+const popped = friends.pop();
+console.log(popped);
 
-// Excercise
-const calcAge = (birthYear) => 2037 - birthYear;
+friends.shift(); // remove index of 0
+console.log(friends);
 
-const years = [1990, 1967, 2002, 2010, 2018];
+console.log(friends.indexOf('Steven')); // 1
+console.log(friends.indexOf('Bob')); // -1  -> There is no Bob
 
-const age1 = calcAge(years[0]);
-const age2 = calcAge(years[1]);
-const age3 = calcAge(years[years.length - 1]);
-console.log(age1, age2, age3);
+friends.push(23);
+console.log(friends.includes('Steven')); // returned true
+console.log(friends.includes('Bob')); // returned false
+console.log(friends.includes(23)); // returned true
+console.log(friends.includes('23')); // returned false because of strict type coercion
 
-const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years[years.length - 1]])];
+if(friends.includes('Steven')) {
+    console.log('You have a friend called Steven')
+}
