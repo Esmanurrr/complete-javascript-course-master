@@ -194,39 +194,80 @@
 
 // --- Dot vs. Bracket Notation ---
 
-const esma = {
-    firstName: 'Esmanur',
-    lastName: 'Mazlum',
-    age: 23,
-    job: 'engineer',
-    friends: ['zeliha', 'emine', 'serkan']
-};
+// const esma = {
+//     firstName: 'Esmanur',
+//     lastName: 'Mazlum',
+//     age: 23,
+//     job: 'engineer',
+//     friends: ['zeliha', 'emine', 'serkan']
+// };
 
-console.log(esma);
+// console.log(esma);
 
-console.log(esma.lastName);
-console.log(esma['lastName']); // the difference is that we can add more expression in bracket notation
+// console.log(esma.lastName);
+// console.log(esma['lastName']); // the difference is that we can add more expression in bracket notation
 
-const nameKey = 'Name';
-console.log(esma['first' + nameKey]); // firstName --> return Esmanur
-console.log(esma['last' + nameKey]); // lastName --> return Mazlum
+// const nameKey = 'Name';
+// console.log(esma['first' + nameKey]); // firstName --> return Esmanur
+// console.log(esma['last' + nameKey]); // lastName --> return Mazlum
 
 
-const interestedIn = prompt('What do you want to know about esma? Choose between firstName, lastName, age, job or friends');
+// const interestedIn = prompt('What do you want to know about esma? Choose between firstName, lastName, age, job or friends');
 //console.log(esma[interestedIn]); we can not use esma.interestedIn because esma has not property of interestedIn, in bracket notation we can get the value of expression
 
-if(esma[interestedIn]) {
-    console.log(esma[interestedIn]);
-} else {
-    console.log('wrong request! Choose between firstName, lastName, age, job or friends');
-}
+// if(esma[interestedIn]) {
+//     console.log(esma[interestedIn]);
+// } else {
+//     console.log('wrong request! Choose between firstName, lastName, age, job or friends');
+// }
 
 // we can add value and key into object
-esma.location = 'Turkey';
-esma['instagram'] = '@ufaklikkesmaa';
-console.log(esma);
+// esma.location = 'Turkey';
+// esma['instagram'] = '@ufaklikkesmaa';
+// console.log(esma);
 
 // Challenge
 // "Esma has 3 friends, and her best friend is called zeliha"
 
-console.log(`${esma.firstName} has ${esma.friends.length} friends, and her best friend is called ${esma.friends[0]}`);
+// console.log(`${esma.firstName} has ${esma.friends.length} friends, and her best friend is called ${esma.friends[0]}`);
+
+
+// --- Object Methods ---
+
+const esma = {
+    firstName: 'Esmanur',
+    lastName: 'Mazlum',
+    birthYear: 2000,
+    job: 'engineer',
+    friends: ['zeliha', 'emine', 'serkan'],
+    hasDriverLicense: true,
+
+    // calcAge: function (birthYear){
+    //     return 2037 - birthYear;
+    // }
+
+    // this keyword equal to the object calling the method
+    // calcAge: function (){
+    //     console.log(this); // consoled whole esma object
+    //     return 2037 - this.birthYear;
+    // }
+
+    calcAge: function (){
+        this.age = 2037 - this.birthYear; // created a property for esma object and calculate the age then assign age property
+        return this.age;
+    },
+
+    getSummary: function(){
+        return `${this.firstName} is a ${this.age}-year old ${this.job}, and she has ${this.hasDriverLicense ? "a " : "no"} driver's license`
+    }
+};
+
+console.log(esma.calcAge());
+
+console.log(esma.age); // you should firstly invoke calcAge()
+
+// Challenge 
+
+// create getSummary method and returned : "Esma is a 23-year old engineer, and she has a driver's license"
+
+console.log(esma.getSummary());
