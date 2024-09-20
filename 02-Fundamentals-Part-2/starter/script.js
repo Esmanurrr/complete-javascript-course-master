@@ -274,6 +274,51 @@
 
 // --- Iteration: The for Loop ---
 
-for (let rep = 1; rep <= 10; rep++){
-    console.log(`Lifting weights repetition ${rep}`);
+// for (let rep = 1; rep <= 10; rep++){
+//     console.log(`Lifting weights repetition ${rep}`);
+// }
+
+const esma = [
+    'Esmanur',
+    'Mazlum',
+    23,
+    'engineer',
+    ['zeliha', 'emine', 'serkan'],
+    true
+];
+
+const types = [];
+
+for(let i = 0; i < esma.length; i++){
+    // reading from esma array
+    console.log(esma[i]);
+
+    // filling types array
+    // types[i] = typeof esma[i];
+    types.push(typeof esma[i]);
 }
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for(let i = 0; i < years.length; i++){
+    ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+// continue and break 
+// continue -> if value is false for condition, loop pass that value
+// break -> if it value is true for condition, get out from loop
+
+for(let i = 0; i < esma.length; i++){
+    if(typeof esma[i] !== 'string') continue;
+    console.log(esma[i]);
+} // only strings
+
+for(let i = 0; i < esma.length; i++){
+    if(typeof esma[i] === 'number') break;
+    console.log(esma[i]);
+} // break with number
+
