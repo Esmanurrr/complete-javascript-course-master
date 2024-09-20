@@ -234,13 +234,13 @@
 
 // --- Object Methods ---
 
-const esma = {
-    firstName: 'Esmanur',
-    lastName: 'Mazlum',
-    birthYear: 2000,
-    job: 'engineer',
-    friends: ['zeliha', 'emine', 'serkan'],
-    hasDriverLicense: true,
+// const esma = {
+//     firstName: 'Esmanur',
+//     lastName: 'Mazlum',
+//     birthYear: 2000,
+//     job: 'engineer',
+//     friends: ['zeliha', 'emine', 'serkan'],
+//     hasDriverLicense: true,
 
     // calcAge: function (birthYear){
     //     return 2037 - birthYear;
@@ -252,22 +252,28 @@ const esma = {
     //     return 2037 - this.birthYear;
     // }
 
-    calcAge: function (){
-        this.age = 2037 - this.birthYear; // created a property for esma object and calculate the age then assign age property
-        return this.age;
-    },
+//     calcAge: function (){
+//         this.age = 2037 - this.birthYear; // created a property for esma object and calculate the age then assign age property
+//         return this.age;
+//     },
 
-    getSummary: function(){
-        return `${this.firstName} is a ${this.age}-year old ${this.job}, and she has ${this.hasDriverLicense ? "a " : "no"} driver's license`
-    }
-};
+//     getSummary: function(){
+//         return `${this.firstName} is a ${this.age}-year old ${this.job}, and she has ${this.hasDriverLicense ? "a " : "no"} driver's license`
+//     }
+// };
 
-console.log(esma.calcAge());
+// console.log(esma.calcAge());
 
-console.log(esma.age); // you should firstly invoke calcAge()
+// console.log(esma.age);  you should firstly invoke calcAge()
 
 // Challenge 
 
 // create getSummary method and returned : "Esma is a 23-year old engineer, and she has a driver's license"
 
-console.log(esma.getSummary());
+// console.log(esma.getSummary());
+
+// --- Iteration: The for Loop ---
+
+for (let rep = 1; rep <= 10; rep++){
+    console.log(`Lifting weights repetition ${rep}`);
+}
