@@ -278,47 +278,70 @@
 //     console.log(`Lifting weights repetition ${rep}`);
 // }
 
-const esma = [
-    'Esmanur',
-    'Mazlum',
-    23,
-    'engineer',
-    ['zeliha', 'emine', 'serkan'],
-    true
-];
+// --- Looping arrays, Breaking and Continuing
 
-const types = [];
+// const esma = [
+//     'Esmanur',
+//     'Mazlum',
+//     23,
+//     'engineer',
+//     ['zeliha', 'emine', 'serkan'],
+//     true
+// ];
 
-for(let i = 0; i < esma.length; i++){
+// const types = [];
+
+// for(let i = 0; i < esma.length; i++){
     // reading from esma array
-    console.log(esma[i]);
+//     console.log(esma[i]);
 
     // filling types array
     // types[i] = typeof esma[i];
-    types.push(typeof esma[i]);
-}
+//     types.push(typeof esma[i]);
+// }
 
-console.log(types);
+// console.log(types);
 
-const years = [1991, 2007, 1969, 2020];
-const ages = [];
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
 
-for(let i = 0; i < years.length; i++){
-    ages.push(2037 - years[i]);
-}
-console.log(ages);
+// for(let i = 0; i < years.length; i++){
+//     ages.push(2037 - years[i]);
+// }
+// console.log(ages);
 
 // continue and break 
 // continue -> if value is false for condition, loop pass that value
 // break -> if it value is true for condition, get out from loop
 
-for(let i = 0; i < esma.length; i++){
-    if(typeof esma[i] !== 'string') continue;
-    console.log(esma[i]);
-} // only strings
+// for(let i = 0; i < esma.length; i++){
+//     if(typeof esma[i] !== 'string') continue;
+//     console.log(esma[i]);
+// } // only strings
 
-for(let i = 0; i < esma.length; i++){
-    if(typeof esma[i] === 'number') break;
-    console.log(esma[i]);
-} // break with number
+// for(let i = 0; i < esma.length; i++){
+//     if(typeof esma[i] === 'number') break;
+//     console.log(esma[i]);
+// } // break with number
 
+// --- Looping Backwards and Loops in Loops
+
+const esma = [
+    'Esmanur',
+    'Mazlum',
+    2037 - 2000,
+    'engineer',
+    ['zeliha', 'emine', 'serkan'],
+];
+
+for(let i = esma.length - 1; i >= 0; i--){
+    console.log(i, esma[i]);
+}
+
+for(let excercise = 1; excercise < 4; excercise++){
+    console.log(`----- Starting excercise ${excercise}`);
+
+    for(let rep = 1; rep < 6; rep++){
+        console.log(`Excercise ${excercise} : Lifting weight repetition ${rep}`);
+    }
+}
