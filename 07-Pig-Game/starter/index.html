@@ -8,6 +8,7 @@
     <title>Pig Game</title>
   </head>
   <body>
+    <div class="btn-wrapper"><button class="show-modal">Change Names</button></div>
     <main>
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -31,6 +32,19 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1 style="text-align: center; font-size: 36px;">Change Player Names</h1>
+      <form>
+        <h1><label>Player 1:</label></h1>
+        <input type="text" class=".player0--name"/>
+        <label>Player 2:</label>
+        <input type="text" class=".player0--name"/>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -103,10 +103,14 @@ const score0El = document.getElementById('score--0');
 const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
+const modal = document.querySelector('.modal');
 
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+const showModal = document.querySelector('.show-modal');
+const closeModal = document.querySelector('.close-modal');
+const overlay = document.querySelector('.overlay');
 const diceEl = document.querySelector('.dice');
 
 let scores, activePlayer, currentScore, playing;
@@ -160,7 +164,7 @@ btnHold.addEventListener('click', function () {
   if (playing) {
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
       playing = false;
       diceEl.classList.add('hidden');
@@ -173,3 +177,9 @@ btnHold.addEventListener('click', function () {
 
 btnNew.addEventListener('click', init);
 
+
+showModal.addEventListener('click', function(){
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+
+})
