@@ -8,7 +8,9 @@
     <title>Pig Game</title>
   </head>
   <body>
-    <div class="btn-wrapper"><button class="show-modal">Change Names</button></div>
+    <div class="btn-wrapper">
+      <button class="show-modal">Change Names</button>
+    </div>
     <main>
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -35,12 +37,24 @@
 
     <div class="modal hidden">
       <button class="close-modal">&times;</button>
-      <h1 style="text-align: center; font-size: 36px;">Change Player Names</h1>
-      <form>
-        <h1><label>Player 1:</label></h1>
-        <input type="text" class=".player0--name"/>
-        <label>Player 2:</label>
-        <input type="text" class=".player0--name"/>
+      <h1 style="text-align: center; font-size: 36px; margin-bottom: 5rem">
+        Change Player Names
+      </h1>
+      <form class="form">
+        <div  class="name-form">
+          <div>
+            <h2><label>Player 1:</label></h2>
+            <input type="text" id="player0-input" class="player-input"/>
+          </div>
+          <div>
+            <h2><label>Player 2:</label></h2>
+            <input type="text" id="player1-input" class="player-input"/>
+          </div>
+        </div>
+        <br>
+        <div class="btn-wrapper">
+          <button class="btn-submit">Submit</button>
+        </div>
       </form>
     </div>
     <div class="overlay hidden"></div>

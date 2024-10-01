@@ -183,10 +183,10 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  min-width: 50%;
 
   background-color: white;
-  padding: 6rem;
+  padding: 3rem;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
@@ -211,6 +211,8 @@ main {
   border: none;
   background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+
   color: #c7365f;
   border-radius: 1rem;
   cursor: pointer;
@@ -226,4 +228,40 @@ main {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+.name-form{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player-input {
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-submit {
+  display: block;
+  width: 50%;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+@media (max-width: 900px){
+  .name-form{
+    flex-wrap: wrap;
+    margin-block: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
 }

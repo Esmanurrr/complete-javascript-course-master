@@ -104,12 +104,17 @@ const score1El = document.getElementById('score--1');
 const current0El = document.getElementById('current--0');
 const current1El = document.getElementById('current--1');
 const modal = document.querySelector('.modal');
+const form = document.querySelector('.form');
+const player0Name = document.getElementById('name--0');
+const player1Name = document.getElementById('name--1');
 
+const player0Input = document.getElementById('player0-input');
+const player1Input = document.getElementById('player1-input');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const showModal = document.querySelector('.show-modal');
-const closeModal = document.querySelector('.close-modal');
+const closeModalBtn = document.querySelector('.close-modal');
 const overlay = document.querySelector('.overlay');
 const diceEl = document.querySelector('.dice');
 
@@ -177,9 +182,32 @@ btnHold.addEventListener('click', function () {
 
 btnNew.addEventListener('click', init);
 
+const resetForm = () => {
+  player0Input.value = " ";
+  player1Input.value = " ";
+}
 
 showModal.addEventListener('click', function(){
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
+});
 
+const closeModal = () => {
+  modal.classList.add('hidden');
+   overlay.classList.add('hidden');
+}
+closeModalBtn.addEventListener('click', closeModal);
+
+
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const player0Val = player0Input.value;
+  const player1Val = player1Input.value;
+
+  player0Name.textContent = player0Val;
+  player1Name.textContent = player1Val;
+  resetForm();
+  closeModal();
 })
+
