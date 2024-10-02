@@ -105,11 +105,13 @@ closeModalBtn.addEventListener('click', closeModal);
 
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  const player0Val = player0Input.value;
-  const player1Val = player1Input.value;
+  const player0Val = player0Input.value.trim();
+  const player1Val = player1Input.value.trim();
 
-  player0Name.textContent = player0Val;
-  player1Name.textContent = player1Val;
+  player0Name.textContent = player0Val === "" ? "Player 1" : player0Val;
+  player1Name.textContent = player1Val === "" ? "Player 2" : player1Val;
+  
+
   resetForm();
   closeModal();
 })
