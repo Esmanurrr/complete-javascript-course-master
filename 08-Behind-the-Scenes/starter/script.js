@@ -42,56 +42,92 @@
 // -------- Hoisting --------
 
 // Variables
-console.log(me); // undefined
+// console.log(me); // undefined
 // console.log(job); // ReferenceError: Cannot access 'job' before initialization
 // console.log(year); // same
 
 
-var me = 'Esma';
-let job = 'engineer';
-const year = 2000;
+// var me = 'Esma';
+// let job = 'engineer';
+// const year = 2000;
 
 // Functions 
-console.log(addDecl(2,3)); // 5
+// console.log(addDecl(2,3)); // 5
 // console.log(addExpr(2,3)); // ReferenceError: Cannot access 'addExpr' before initialization
 // console.log(addExpr(2,3)); // (with var) Uncaught TypeError: 'addExpr' is not a function. Because var will be undefined then we call it like that: undefined(2,3) so that is a not function.
 // console.log(addArrow(2,3));
 
 
-function addDecl(a,b){
-    return a + b;
-}
+// function addDecl(a,b){
+//     return a + b;
+// }
 
 // const addExpr = function (a,b) {
 //     return a + b;
 // }
 
-var addExpr = function (a,b) {
-    return a + b;
-}
+// var addExpr = function (a,b) {
+//     return a + b;
+// }
 
-const addArrow = (a,b) => a + b;
+// const addArrow = (a,b) => a + b;
 
 
 // Example
-console.log(numProducts); // undefined
-if(!numProducts) deleteShoppingCart(); // All products are deleted.
+// console.log(numProducts); // undefined
+// if(!numProducts) deleteShoppingCart(); // All products are deleted.
 
-var numProducts = 10;
+// var numProducts = 10;
 
-function deleteShoppingCart(){
-    console.log('All products are deleted');
-}
+// function deleteShoppingCart(){
+//     console.log('All products are deleted');
+// }
 
 // what is the best practices ?
 // 1. dont use var to declare variables. use const or let
 // 2. declare your variables top of code 
 // 3. only use variables and functions after declaration of 
 
-var x = 1; // we can only see x variable in window object as a property
-let y = 2; // we can not see let and const variables
-const z = 3;
+// var x = 1; // we can only see x variable in window object as a property
+// let y = 2; // we can not see let and const variables
+// const z = 3;
 
-console.log(x === window.x); // true
-console.log(y === window.y); // false
-console.log(z === window.z); // false
+// console.log(x === window.x); // true
+// console.log(y === window.y); // false
+// console.log(z === window.z); // false
+
+
+// ------ THIS KEYWORD ------
+
+console.log(this); // window - global object
+
+// const calcAge = function(birthYear){
+//     console.log(2037 - birthYear); // 46
+//     console.log(this); // undefined because of strict mode
+// }
+// calcAge(1991);
+
+const calcAgeArrow = (birthYear) => {
+    console.log(2037 - birthYear); // 46
+    console.log(this); // window (lexical this keyword)
+}
+calcAgeArrow(1991);
+
+const jonas = {
+    year: 1991,
+    calcAge: function(){
+        console.log(this); // jonas object
+        console.log(2037 - this.year); // 46
+    }
+}
+jonas.calcAge(1991);
+
+const matilda = {
+    year: 2017
+};
+
+matilda.calcAge = jonas.calcAge;
+matilda.calcAge(); // 20
+
+const f = jonas.calcAge;
+f(); // undefined because of there is no year 
