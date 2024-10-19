@@ -135,14 +135,14 @@
 
 // ------- Regular Functions vs. Arrow Functions ------
 
-var firstName = 'Matilda';
+// var firstName = 'Matilda';
 
-const jonas = {
-    firstName: 'Jonas',
-    year: 1991,
-    calcAge: function(){
-        console.log(this); // jonas object
-        console.log(2037 - this.year); // 46
+// const jonas = {
+//     firstName: 'Jonas',
+//     year: 1991,
+//     calcAge: function(){
+//         console.log(this); // jonas object
+//         console.log(2037 - this.year); // 46
 
         // solution 1
         // const self = this
@@ -154,30 +154,49 @@ const jonas = {
         // };
 
         // solution 2
-        const isMillenial = () => { // it works because arrow function use it parent's 'this' keyword
-            console.log(this); // undefined
-            console.log(this.year >= 1981 && this.year <= 1996); // Uncaught TypeError: Cannot read property 'year' of undefined at isMillenial
-        };
-        isMillenial();
-    },
+//         const isMillenial = () => { // it works because arrow function use it parent's 'this' keyword
+//             console.log(this); // undefined
+//             console.log(this.year >= 1981 && this.year <= 1996); // Uncaught TypeError: Cannot read property 'year' of undefined at isMillenial
+//         };
+//         isMillenial();
+//     },
 
-    greet: () => console.log(`Hey ${this.firstName}`) // 'this' from window ** Dont use arrow function as a method.
-};
+//     greet: () => console.log(`Hey ${this.firstName}`) // 'this' from window ** Dont use arrow function as a method.
+// };
 
-jonas.greet(); // "Hey undefined", with var this will be 'Hey Matilda'
-console.log(this.firstName); // undefined because global scope has no firstName prop. 
+// jonas.greet(); // "Hey undefined", with var this will be 'Hey Matilda'
+// console.log(this.firstName); // undefined because global scope has no firstName prop. 
 
 
 // Arguments keyword
-const addExpr = function (a,b) {
-    console.log(arguments); // Arguments: [2,5,8,34]
-    return a + b;
-};
-addExpr(2,5,8,34); 
+// const addExpr = function (a,b) {
+//     console.log(arguments); // Arguments: [2,5,8,34]
+//     return a + b;
+// };
+// addExpr(2,5,8,34); 
 
 
-const addArrow = (a,b) => {
-    console.log(arguments); // Uncaught ReferenceError: arguments is not defined
-    return a+b;
+// const addArrow = (a,b) => {
+//     console.log(arguments); // Uncaught ReferenceError: arguments is not defined
+//     return a+b;
+// };
+// addArrow(2,6,3,5);
+
+
+// ------ Primitives vs Objects ------
+
+
+let age = 30;
+let oldAge = age; // 30
+age = 31; 
+
+const me = {
+    name: 'Jonas',
+    age: 30
 };
-addArrow(2,6,3,5);
+
+const friend = me;
+friend.age = 27;
+
+console.log('Friend',friend); // age: 27
+console.log('Me',me); // age: 27, why me's age is changed? because object is a reference type
