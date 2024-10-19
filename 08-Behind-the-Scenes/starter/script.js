@@ -99,7 +99,7 @@
 
 // ------ THIS KEYWORD ------
 
-console.log(this); // window - global object
+// console.log(this); // window - global object
 
 // const calcAge = function(birthYear){
 //     console.log(2037 - birthYear); // 46
@@ -107,27 +107,77 @@ console.log(this); // window - global object
 // }
 // calcAge(1991);
 
-const calcAgeArrow = (birthYear) => {
-    console.log(2037 - birthYear); // 46
-    console.log(this); // window (lexical this keyword)
-}
-calcAgeArrow(1991);
+// const calcAgeArrow = (birthYear) => {
+//     console.log(2037 - birthYear); // 46
+//     console.log(this); // window (lexical this keyword)
+// }
+// calcAgeArrow(1991);
+
+// const jonas = {
+//     year: 1991,
+//     calcAge: function(){
+//         console.log(this); // jonas object
+//         console.log(2037 - this.year); // 46
+//     }
+// }
+// jonas.calcAge(1991);
+
+// const matilda = {
+//     year: 2017
+// };
+
+// matilda.calcAge = jonas.calcAge;
+// matilda.calcAge(); // 20
+
+// const f = jonas.calcAge;
+// f(); // undefined because of there is no year 
+
+
+// ------- Regular Functions vs. Arrow Functions ------
+
+var firstName = 'Matilda';
 
 const jonas = {
+    firstName: 'Jonas',
     year: 1991,
     calcAge: function(){
         console.log(this); // jonas object
         console.log(2037 - this.year); // 46
-    }
-}
-jonas.calcAge(1991);
 
-const matilda = {
-    year: 2017
+        // solution 1
+        // const self = this
+        // const isMillenial = function() {
+        //     console.log(self); // undefined
+        //     console.log(self.year >= 1981 && self.year <= 1996);
+        //     console.log(this.year >= 1981 && this.year <= 1996); // Uncaught TypeError: Cannot read property 'year' of undefined at isMillenial
+
+        // };
+
+        // solution 2
+        const isMillenial = () => { // it works because arrow function use it parent's 'this' keyword
+            console.log(this); // undefined
+            console.log(this.year >= 1981 && this.year <= 1996); // Uncaught TypeError: Cannot read property 'year' of undefined at isMillenial
+        };
+        isMillenial();
+    },
+
+    greet: () => console.log(`Hey ${this.firstName}`) // 'this' from window ** Dont use arrow function as a method.
 };
 
-matilda.calcAge = jonas.calcAge;
-matilda.calcAge(); // 20
+jonas.greet(); // "Hey undefined", with var this will be 'Hey Matilda'
+console.log(this.firstName); // undefined because global scope has no firstName prop. 
 
-const f = jonas.calcAge;
-f(); // undefined because of there is no year 
+
+// Arguments keyword
+const addExpr = function (a,b) {
+    console.log(arguments); // Arguments: [2,5,8,34]
+    return a + b;
+};
+addExpr(2,5,8,34); 
+
+
+const addArrow = (a,b) => {
+    console.log(arguments); // Uncaught ReferenceError: arguments is not defined
+    return a+b;
+};
+addArrow(2,6,3,5);
