@@ -186,17 +186,55 @@
 // ------ Primitives vs Objects ------
 
 
-let age = 30;
-let oldAge = age; // 30
-age = 31; 
+// let age = 30;
+// let oldAge = age; // 30
+// age = 31; 
 
-const me = {
-    name: 'Jonas',
-    age: 30
+// const me = {
+//     name: 'Jonas',
+//     age: 30
+// };
+
+// const friend = me;
+// friend.age = 27;
+
+// console.log('Friend',friend); // age: 27
+// console.log('Me',me); // age: 27, why me's age is changed? because object is a reference type
+
+// Primitives
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+// Reference types
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
 };
 
-const friend = me;
-friend.age = 27;
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
 
-console.log('Friend',friend); // age: 27
-console.log('Me',me); // age: 27, why me's age is changed? because object is a reference type
+console.log('Before marriage :', jessica); // lastName: 'Davis',
+console.log('After marriage :', marriedJessica); // lastName: 'Davis',
+
+// marriedJessica = {} we cannot this way
+
+// Copying objects
+const jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+    family: ['Alice', 'Bob']
+};
+
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage :', jessica2); // lastName: 'Williams' - not changed, array length: 4
+console.log('After marriage :', jessicaCopy); // lastName: 'Davis' - changed, in the first level prop it will change actually but if it is array, it will not work (array length: 4)
