@@ -37,36 +37,77 @@ const restaurant = {
 
   orderPasta : function(ing1, ing2, ing3){
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient); // mushrooms
+    console.log(otherIngredients); // ['onion', 'olives', 'spinach']
   }
 
 };
 
+// ---------- REST PATTERN AND PARAMETERS ---------
+
+// 1) Destructuring
+
+// SPRED, because on RIGHT side of = (assignment operator)
+const arr = [1,2, ...[3,4]];
+
+// REST, because on LEFT side of = 
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // 1, 2, [3, 4, 5]
+
+// REST element must be a last element on array
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherFood); // from the main menu we just get the pizza and risotto, then from starter menu we all get them
+
+// Objects
+const { sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays); // {thu: {...}, fri: {...}}
+
+// 2) Functions
+const add = function(...numbers){
+  let sum = 0;
+  for(let i = 0; i <numbers.length; i++) sum += numbers[i];
+  console.log(sum)
+}
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const x = [23, 5, 7];
+add(...x);
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+restaurant.orderPizza('mushrooms'); // mushrooms, []
+
+
 // -------- SPREAD OPERATOR --------
 
-const arr = [7,8,9];
-const badNewArr = [1,2, arr[0], arr[1], arr[2]]; // bad version
-console.log(badNewArr); // [1,2,7,8,9]
+// const arr = [7,8,9];
+// const badNewArr = [1,2, arr[0], arr[1], arr[2]]; // bad version
+// console.log(badNewArr); // [1,2,7,8,9]
 
-const newArr = [1,2, ...arr]; // [1,2,7,8,9] - spread operator seperate each element of array - we created NEW array. we are NOT manipulating
+// const newArr = [1,2, ...arr]; // [1,2,7,8,9] - spread operator seperate each element of array - we created NEW array. we are NOT manipulating
 // const newArr = [1,2, arr]; // [1,2, Array(3)]
-console.log(newArr); 
+// console.log(newArr); 
 
-console.log(...newArr); // 1, 2, 3, 7, 8, 9 - not array. if we need to each element individually, we should to use spread operator
+// console.log(...newArr); // 1, 2, 3, 7, 8, 9 - not array. if we need to each element individually, we should to use spread operator
 
-const newMenu = [...restaurant.mainMenu, 'Gnocci']; // ["Pizza", "Pasta", "Risotto", "Gnocci"]
+// const newMenu = [...restaurant.mainMenu, 'Gnocci']; // ["Pizza", "Pasta", "Risotto", "Gnocci"]
 
 // spread operator likes destructuring BUT spread operator takes all the element from the array and does NOT create a variable. we can only use it in the places where we would other ways right values seperated by commas
 
 // Copy array
-const mainMenuCopy = [...restaurant.mainMenu]; // shallow copy of mainMenu
+// const mainMenuCopy = [...restaurant.mainMenu]; // shallow copy of mainMenu
 
 // Join 2 arrays
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 // Iterables: array, strings, maps, sets. NOT objects. we can use spread operator on iterables.
-const str = 'Jonas';
-const letters = [...str, " ", "S."]; // ["J", "o", "n", "a", "s", " ", "S."]
-console.log(...str); // J o n a s
+// const str = 'Jonas';
+// const letters = [...str, " ", "S."]; // ["J", "o", "n", "a", "s", " ", "S."]
+// console.log(...str); // J o n a s
 
 // console.log(`${...str} Schmedtmann`); // we can not use like this way because string interpolation want to get expression that returns a value.
 
@@ -78,13 +119,13 @@ console.log(...str); // J o n a s
 
 // spread operator works on objects even though objects are not iterable
 // Objects
-const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
-console.log(newRestaurant);
+// const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Guiseppe'};
+// console.log(newRestaurant);
 
-const restaurantCopy = {...restaurant};
-restaurantCopy.name = "Ristorante Roma";
-console.log(restaurantCopy.name); // "Ristorante Roma"
-console.log(restaurant.name); // 'Classico Italiano' - actual object is not manipulated. 
+// const restaurantCopy = {...restaurant};
+// restaurantCopy.name = "Ristorante Roma";
+// console.log(restaurantCopy.name); // "Ristorante Roma"
+// console.log(restaurant.name); // 'Classico Italiano' - actual object is not manipulated. 
 
 // -------- DESTRUCTURING OBJECTS -------
 
