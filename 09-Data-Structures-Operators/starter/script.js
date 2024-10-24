@@ -46,40 +46,81 @@ const restaurant = {
 
 };
 
+// --------- SHORT CIRCUITING (|| AND &&) --------------
+
+console.log('--------OR--------');
+// if  all the element is false, return last one. but if at least one element is true, return that one.
+// Use ANY data type, return ANY data type, short-circuiting
+console.log(3 || 'Jonas'); // 3
+console.log('' || 'Jonas'); // Jonas
+console.log(true || 0); // true
+console.log(undefined || null); // null
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+// restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1); // 10 
+
+// you can set default value if its null
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2); // 10, if restaurant.numGuests is undefined
+
+console.log('--------AND--------');
+// if  all the element is true, return last one. but if at least one element is false, return that one.
+console.log(0 && 'Jonas'); // 0
+console.log(7 && 'Jonas'); // Jonas
+
+console.log('Hello' && 23 && null && 'jonas'); // null
+
+// practical example
+if (restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+// you can check if its null
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+
+
+
+
+
+
 // ---------- REST PATTERN AND PARAMETERS ---------
 
 // 1) Destructuring
 
 // SPRED, because on RIGHT side of = (assignment operator)
-const arr = [1,2, ...[3,4]];
+// const arr = [1,2, ...[3,4]];
 
 // REST, because on LEFT side of = 
-const [a, b, ...others] = [1, 2, 3, 4, 5];
-console.log(a, b, others); // 1, 2, [3, 4, 5]
+// const [a, b, ...others] = [1, 2, 3, 4, 5];
+// console.log(a, b, others); // 1, 2, [3, 4, 5]
 
 // REST element must be a last element on array
-const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(pizza, risotto, otherFood); // from the main menu we just get the pizza and risotto, then from starter menu we all get them
+// const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(pizza, risotto, otherFood); // from the main menu we just get the pizza and risotto, then from starter menu we all get them
 
 // Objects
-const { sat, ...weekdays} = restaurant.openingHours;
-console.log(weekdays); // {thu: {...}, fri: {...}}
+// const { sat, ...weekdays} = restaurant.openingHours;
+// console.log(weekdays); // {thu: {...}, fri: {...}}
 
 // 2) Functions
-const add = function(...numbers){
-  let sum = 0;
-  for(let i = 0; i <numbers.length; i++) sum += numbers[i];
-  console.log(sum)
-}
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
+// const add = function(...numbers){
+//   let sum = 0;
+//   for(let i = 0; i <numbers.length; i++) sum += numbers[i];
+//   console.log(sum)
+// }
+// add(2, 3);
+// add(5, 3, 7, 2);
+// add(8, 2, 5, 3, 2, 1, 4);
 
-const x = [23, 5, 7];
-add(...x);
+// const x = [23, 5, 7];
+// add(...x);
 
-restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
-restaurant.orderPizza('mushrooms'); // mushrooms, []
+// restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+// restaurant.orderPizza('mushrooms'); // mushrooms, []
 
 
 // -------- SPREAD OPERATOR --------
