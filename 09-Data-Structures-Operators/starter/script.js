@@ -59,6 +59,7 @@ const rest2 = {
   owner: 'Giovanni Rossi'
 };
 
+// ------------- LOGICAK ASSIGNMENT OPERATORS -----------
 
 // OR assignment operator
 // rest1.numGuests = rest1.numGuests || 10;
@@ -68,21 +69,18 @@ const rest2 = {
 // rest2.numGuests ||= 10;
 
 // nullish assignment operator (null or undefined)
-rest1.numGuests ??= 10; // and now if numGuests is 0, then it returned 0, NOT 10
-rest2.numGuests ??= 10;
+// rest1.numGuests ??= 10; // and now if numGuests is 0, then it returned 0, NOT 10
+// rest2.numGuests ??= 10;
 
 // rest1.owner = rest1.owner && '<ANONYMOUS>'; // {name: 'Capri', numGuests: 20, owner: undefined}, because there is no owner property of rest1 so it return first falsy value. this version is false
 // rest2.owner = rest2.owner && '<ANONYMOUS>'; // {name: 'La Piazza', owner: '<ANONYMOUS>', numGuests: 10}, because both of true so returned last element
 
 // AND assignment operator
-rest1.owner &&= '<ANONYMOUS>'; // this is true because if rest1 has owner property then set the value anonymous, but rest1 has no owner property. so nothings happen
-rest2.owner &&= '<ANONYMOUS>';
+// rest1.owner &&= '<ANONYMOUS>'; // this is true because if rest1 has owner property then set the value anonymous, but rest1 has no owner property. so nothings happen
+// rest2.owner &&= '<ANONYMOUS>';
 
-
-
-console.log(rest1); // {name: 'Capri', numGuests: 20}
-console.log(rest2); // {name: 'La Piazza', owner: 'Giovanni Rossi', numGuests: 10}
-
+// console.log(rest1); // {name: 'Capri', numGuests: 20}
+// console.log(rest2); // {name: 'La Piazza', owner: 'Giovanni Rossi', numGuests: 10}
 
 
 // ---------- THE NULLISH COALESCING OPERATOR (??) ---------
