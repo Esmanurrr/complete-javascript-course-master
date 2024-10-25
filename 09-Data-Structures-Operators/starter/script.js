@@ -46,40 +46,51 @@ const restaurant = {
 
 };
 
-// --------- SHORT CIRCUITING (|| AND &&) --------------
-
-console.log('--------OR--------');
-// if  all the element is false, return last one. but if at least one element is true, return that one.
-// Use ANY data type, return ANY data type, short-circuiting
-console.log(3 || 'Jonas'); // 3
-console.log('' || 'Jonas'); // Jonas
-console.log(true || 0); // true
-console.log(undefined || null); // null
-
-console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+// ---------- THE NULLISH COALESCING OPERATOR (??) ---------
 
 // restaurant.numGuests = 0;
-const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guests1); // 10 
+const guests = restaurant.numGuests || 10;
+console.log(guests); 
+
+// Nullish : null and undefined (NOT 0 or '')
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
+
+// --------- SHORT CIRCUITING (|| AND &&) --------------
+
+// console.log('--------OR--------');
+// if  all the element is false, return last one. but if at least one element is true, return that one.
+// Use ANY data type, return ANY data type, short-circuiting
+// console.log(3 || 'Jonas'); // 3
+// console.log('' || 'Jonas'); // Jonas
+// console.log(true || 0); // true
+// console.log(undefined || null); // null
+
+// console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+// restaurant.numGuests = 0;
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+// console.log(guests1); // 10 
 
 // you can set default value if its null
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2); // 10, if restaurant.numGuests is undefined
+// const guests2 = restaurant.numGuests || 10;
+// console.log(guests2); // 10, if restaurant.numGuests is undefined
 
-console.log('--------AND--------');
+// console.log('--------AND--------');
 // if  all the element is true, return last one. but if at least one element is false, return that one.
-console.log(0 && 'Jonas'); // 0
-console.log(7 && 'Jonas'); // Jonas
+// console.log(0 && 'Jonas'); // 0
+// console.log(7 && 'Jonas'); // Jonas
 
-console.log('Hello' && 23 && null && 'jonas'); // null
+// console.log('Hello' && 23 && null && 'jonas'); // null
 
 // practical example
-if (restaurant.orderPizza){
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
+// if (restaurant.orderPizza){
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
 
 // you can check if its null
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 
 
