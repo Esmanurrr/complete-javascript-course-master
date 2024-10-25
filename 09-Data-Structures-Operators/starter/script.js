@@ -46,15 +46,54 @@ const restaurant = {
 
 };
 
+// ------------ LOGICAL ASSIGNMENT OPERATORS -------------
+
+const rest1 = {
+  name: 'Capri',
+  // numGuests: 20
+  numGuests: 0
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi'
+};
+
+
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+// rest1.numGuests ||= 10; // when numGuests is 0 then value will be 10 (because 0 is falsy value), so or assignment doesnt work in it
+// rest2.numGuests ||= 10;
+
+// nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10; // and now if numGuests is 0, then it returned 0, NOT 10
+rest2.numGuests ??= 10;
+
+// rest1.owner = rest1.owner && '<ANONYMOUS>'; // {name: 'Capri', numGuests: 20, owner: undefined}, because there is no owner property of rest1 so it return first falsy value. this version is false
+// rest2.owner = rest2.owner && '<ANONYMOUS>'; // {name: 'La Piazza', owner: '<ANONYMOUS>', numGuests: 10}, because both of true so returned last element
+
+// AND assignment operator
+rest1.owner &&= '<ANONYMOUS>'; // this is true because if rest1 has owner property then set the value anonymous, but rest1 has no owner property. so nothings happen
+rest2.owner &&= '<ANONYMOUS>';
+
+
+
+console.log(rest1); // {name: 'Capri', numGuests: 20}
+console.log(rest2); // {name: 'La Piazza', owner: 'Giovanni Rossi', numGuests: 10}
+
+
+
 // ---------- THE NULLISH COALESCING OPERATOR (??) ---------
 
 // restaurant.numGuests = 0;
-const guests = restaurant.numGuests || 10;
-console.log(guests); 
+// const guests = restaurant.numGuests || 10;
+// console.log(guests); 
 
 // Nullish : null and undefined (NOT 0 or '')
-const guestsCorrect = restaurant.numGuests ?? 10;
-console.log(guestsCorrect);
+// const guestsCorrect = restaurant.numGuests ?? 10;
+// console.log(guestsCorrect);
 
 
 // --------- SHORT CIRCUITING (|| AND &&) --------------
