@@ -53,32 +53,60 @@ const restaurant = {
 
 };
 
-if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open); // this is complex way to check if its null
+// ------------- LOOPING OBJECTS: OBJECT KEYS, VALUES AND ENTRIES ----------
+
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties); // ['thu', 'fri','sat']
+
+let openStr = `We are open on ${properties.length} days`;
+
+for (const day of properties) {
+  openStr += `${day},`;
+}
+console.log(openStr); // we are open on 3 days: thu, fri, sat
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entire object
+const entries = Object.entries(openingHours);
+console.log(entries); // entries get objects with array
+
+for(const [key, {open, close}] of entries){
+  console.log(`On ${key} we open at ${open} and close at ${close}`)
+};
+
+
+// ------------ OPTIONAL CHAINING ----------------
+
+// if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open); // this is complex way to check if its null
 
 // with optional chaining
-console.log(restaurant.openingHours.mon?.open); // if monday exist return value, but if not returned undefined. this returned undefined now
-console.log(restaurant.openingHours?.mon?.open); // if monday and openinghours exist return value, but if not returned undefined. because there is no monday bro..
+// console.log(restaurant.openingHours.mon?.open); // if monday exist return value, but if not returned undefined. this returned undefined now
+// console.log(restaurant.openingHours?.mon?.open); // if monday and openinghours exist return value, but if not returned undefined. because there is no monday bro..
 
 // Example
-const days = ['mon','tue','wed','thu','fri','sat','sun'];
+// const days = ['mon','tue','wed','thu','fri','sat','sun'];
 
-for (const day of days) {
-  console.log(day); // each element 
-  console.log([day]); // with array
-  const open = restaurant.openingHours[day]?.open ?? 'closed'; // if we use ||, 0 will be falsy value so it will be undefined. but in nullish operator 0 is not falsy value :)
-  console.log(`On ${day}, we open at ${open}`);
-}
+// for (const day of days) {
+//   console.log(day); // each element 
+//   console.log([day]); // with array
+//   const open = restaurant.openingHours[day]?.open ?? 'closed'; // if we use ||, 0 will be falsy value so it will be undefined. but in nullish operator 0 is not falsy value :)
+//   console.log(`On ${day}, we open at ${open}`);
+// }
 
 // Methods 
-console.log(restaurant.order?.(0, 1) ?? 'method does not exist');
-console.log(restaurant.orderRisotto?.(0, 1) ?? 'method does not exist');
+// console.log(restaurant.order?.(0, 1) ?? 'method does not exist');
+// console.log(restaurant.orderRisotto?.(0, 1) ?? 'method does not exist');
 
 // Arrays
-const users = [
-  {name: 'Jonas', email: 'hello@jonas.io'}
-];
+// const users = [
+//   {name: 'Jonas', email: 'hello@jonas.io'}
+// ];
 
-console.log(users[0]?.name ?? 'User array empty');
+// console.log(users[0]?.name ?? 'User array empty');
 // if(users.length > 0) console.log(users[0].name); else console.log('User array empty');
 
 
