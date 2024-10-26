@@ -53,22 +53,52 @@ const restaurant = {
 
 };
 
+if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open); // this is complex way to check if its null
+
+// with optional chaining
+console.log(restaurant.openingHours.mon?.open); // if monday exist return value, but if not returned undefined. this returned undefined now
+console.log(restaurant.openingHours?.mon?.open); // if monday and openinghours exist return value, but if not returned undefined. because there is no monday bro..
+
+// Example
+const days = ['mon','tue','wed','thu','fri','sat','sun'];
+
+for (const day of days) {
+  console.log(day); // each element 
+  console.log([day]); // with array
+  const open = restaurant.openingHours[day]?.open ?? 'closed'; // if we use ||, 0 will be falsy value so it will be undefined. but in nullish operator 0 is not falsy value :)
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods 
+console.log(restaurant.order?.(0, 1) ?? 'method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'method does not exist');
+
+// Arrays
+const users = [
+  {name: 'Jonas', email: 'hello@jonas.io'}
+];
+
+console.log(users[0]?.name ?? 'User array empty');
+// if(users.length > 0) console.log(users[0].name); else console.log('User array empty');
+
+
+
 // ---------- LOOPING ARRAYS : THE FOR-OF LOOP ---------  
 
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
-for(const item of menu) console.log(item);
+// for(const item of menu) console.log(item);
 // we can still use break or continue keyword in for-of loop
 
 // for(const item of menu.entries()) {
 //   console.log(`${item[0] + 1}: ${item[1]}`); // if item is an array, we can destruct it.
 // }
 
-for(const [i, el] of menu.entries()) {
-  console.log(`${i + 1}: ${el}`); // destructed way
-}
+// for(const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`); // destructed way
+// }
 
-console.log([...menu.entries()]);
+// console.log([...menu.entries()]);
 // entries has 2 element array in each menu element. in 2 indexes array, it has index number and name of element of menu
 
 
