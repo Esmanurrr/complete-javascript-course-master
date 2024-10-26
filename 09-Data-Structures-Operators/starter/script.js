@@ -46,18 +46,39 @@ const restaurant = {
 
 };
 
+// ---------- LOOPING ARRAYS : THE FOR-OF LOOP ---------  
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for(const item of menu) console.log(item);
+// we can still use break or continue keyword in for-of loop
+
+// for(const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`); // if item is an array, we can destruct it.
+// }
+
+for(const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`); // destructed way
+}
+
+console.log([...menu.entries()]);
+// entries has 2 element array in each menu element. in 2 indexes array, it has index number and name of element of menu
+
+
+
+
 // ------------ LOGICAL ASSIGNMENT OPERATORS -------------
 
-const rest1 = {
-  name: 'Capri',
-  // numGuests: 20
-  numGuests: 0
-};
+// const rest1 = {
+//   name: 'Capri',
+//   // numGuests: 20
+//   numGuests: 0
+// };
 
-const rest2 = {
-  name: 'La Piazza',
-  owner: 'Giovanni Rossi'
-};
+// const rest2 = {
+//   name: 'La Piazza',
+//   owner: 'Giovanni Rossi'
+// };
 
 // ------------- LOGICAK ASSIGNMENT OPERATORS -----------
 
