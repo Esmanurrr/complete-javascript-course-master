@@ -53,30 +53,57 @@ const restaurant = {
 
 };
 
+// --------------- SETS ------------
+
+
+const orderSet = new Set(['Pasta','Pizza','Risotto','Pizza','Pasta','Pizza']);
+console.log(orderSet); // Set(3), all duplicates are gone. elements are unique. orders in the set is not important
+
+console.log(new Set('Jonas')); // Set(5) {"J","o","n","a","s"}
+
+console.log(orderSet.size); // 3, not length!
+console.log(orderSet.has('Pizza')); // true
+console.log(orderSet.has('Bread')); // false
+
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+orderSet.delete('Risotto');
+// orderSet.clear(); // delete all of the elements from Set
+console.log(orderSet); 
+
+for (const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
+const staffUnique = [...new Set(staff)]; // we turned set to array
+console.log(staffUnique);
+
+console.log(new Set('jonasschmedtmann').size); // how many letters in the name
+
 // ------------- LOOPING OBJECTS: OBJECT KEYS, VALUES AND ENTRIES ----------
 
 // Property NAMES
-const properties = Object.keys(openingHours);
-console.log(properties); // ['thu', 'fri','sat']
+// const properties = Object.keys(openingHours);
+// console.log(properties); // ['thu', 'fri','sat']
 
-let openStr = `We are open on ${properties.length} days`;
+// let openStr = `We are open on ${properties.length} days`;
 
-for (const day of properties) {
-  openStr += `${day},`;
-}
-console.log(openStr); // we are open on 3 days: thu, fri, sat
+// for (const day of properties) {
+//   openStr += `${day},`;
+// }
+// console.log(openStr); // we are open on 3 days: thu, fri, sat
 
 // Property VALUES
-const values = Object.values(openingHours);
-console.log(values);
+// const values = Object.values(openingHours);
+// console.log(values);
 
 // Entire object
-const entries = Object.entries(openingHours);
-console.log(entries); // entries get objects with array
+// const entries = Object.entries(openingHours);
+// console.log(entries); // entries get objects with array
 
-for(const [key, {open, close}] of entries){
-  console.log(`On ${key} we open at ${open} and close at ${close}`)
-};
+// for(const [key, {open, close}] of entries){
+//   console.log(`On ${key} we open at ${open} and close at ${close}`)
+// };
 
 
 // ------------ OPTIONAL CHAINING ----------------
