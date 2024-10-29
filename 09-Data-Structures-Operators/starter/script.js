@@ -53,32 +53,62 @@ const restaurant = {
 
 };
 
+// ------------- MAPS ------------
+
+const rest = new Map();
+rest.set('name','Classico Italiano');
+rest.set(1, 'Firenze Italy');
+console.log(rest.set(2, 'Lizbon, Portugal')); // returns updated whole map
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+    .set('open',11)
+    .set('close',23)
+    .set(true, 'We are open :D')
+    .set(false, 'We are closed :(');
+
+console.log(rest.get('name')); // Classico Italiano
+console.log(rest.get(true)); // we are open :D 
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // we are open :D (but this way is not readeble)
+
+console.log(rest.has('categories')); // true
+// rest.clear();
+rest.delete(2); 
+console.log(rest.size);
+
+const arr = [1,2]
+rest.set(arr, 'Test');
+// rest.set([1,2], 'Test');
+console.log(rest.get([1,2])); // returns undefined (NOT 'Test', because they are not the same object in the heap)
+
+rest.set(document.querySelector('h1'), 'Heading');
+
 // --------------- SETS ------------
 
+// const orderSet = new Set(['Pasta','Pizza','Risotto','Pizza','Pasta','Pizza']);
+// console.log(orderSet); // Set(3), all duplicates are gone. elements are unique. orders in the set is not important
 
-const orderSet = new Set(['Pasta','Pizza','Risotto','Pizza','Pasta','Pizza']);
-console.log(orderSet); // Set(3), all duplicates are gone. elements are unique. orders in the set is not important
+// console.log(new Set('Jonas')); // Set(5) {"J","o","n","a","s"}
 
-console.log(new Set('Jonas')); // Set(5) {"J","o","n","a","s"}
+// console.log(orderSet.size); // 3, not length!
+// console.log(orderSet.has('Pizza')); // true
+// console.log(orderSet.has('Bread')); // false
 
-console.log(orderSet.size); // 3, not length!
-console.log(orderSet.has('Pizza')); // true
-console.log(orderSet.has('Bread')); // false
-
-orderSet.add('Garlic Bread');
-orderSet.add('Garlic Bread');
-orderSet.delete('Risotto');
+// orderSet.add('Garlic Bread');
+// orderSet.add('Garlic Bread');
+// orderSet.delete('Risotto');
 // orderSet.clear(); // delete all of the elements from Set
-console.log(orderSet); 
+// console.log(orderSet); 
 
-for (const order of orderSet) console.log(order);
+// for (const order of orderSet) console.log(order);
 
 // Example
-const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
-const staffUnique = [...new Set(staff)]; // we turned set to array
-console.log(staffUnique);
+// const staff = ['Waiter','Chef','Waiter','Manager','Chef','Waiter'];
+// const staffUnique = [...new Set(staff)]; // we turned set to array
+// console.log(staffUnique);
 
-console.log(new Set('jonasschmedtmann').size); // how many letters in the name
+// console.log(new Set('jonasschmedtmann').size); // how many letters in the name
 
 // ------------- LOOPING OBJECTS: OBJECT KEYS, VALUES AND ENTRIES ----------
 
