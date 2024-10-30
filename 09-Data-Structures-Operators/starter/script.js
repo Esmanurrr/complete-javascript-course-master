@@ -123,6 +123,11 @@ console.log([...question.keys()]);
 console.log([...question.values()]);
 
 
+// when we use these data structures? 
+// if we have a simple list, we can use arrays or sets
+// if we have key/value pairs, we can use objects or maps (key allows us to describe values)
+// if we have a json datas, we can use array. because json datas are objects that in one array
+
 
 // --------------- SETS ------------
 
