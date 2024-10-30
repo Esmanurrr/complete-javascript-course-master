@@ -55,34 +55,74 @@ const restaurant = {
 
 // ------------- MAPS ------------
 
-const rest = new Map();
-rest.set('name','Classico Italiano');
-rest.set(1, 'Firenze Italy');
-console.log(rest.set(2, 'Lizbon, Portugal')); // returns updated whole map
+// Maps: Fundamentals
+// const rest = new Map();
+// rest.set('name','Classico Italiano');
+// rest.set(1, 'Firenze Italy');
+// console.log(rest.set(2, 'Lizbon, Portugal')); // returns updated whole map
 
-rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-    .set('open',11)
-    .set('close',23)
-    .set(true, 'We are open :D')
-    .set(false, 'We are closed :(');
+// rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//     .set('open',11)
+//     .set('close',23)
+//     .set(true, 'We are open :D')
+//     .set(false, 'We are closed :(');
 
-console.log(rest.get('name')); // Classico Italiano
-console.log(rest.get(true)); // we are open :D 
+// console.log(rest.get('name')); // Classico Italiano
+// console.log(rest.get(true)); // we are open :D 
 
-const time = 21;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // we are open :D (but this way is not readeble)
+// const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close'))); // we are open :D (but this way is not readeble)
 
-console.log(rest.has('categories')); // true
-// rest.clear();
-rest.delete(2); 
-console.log(rest.size);
+// console.log(rest.has('categories')); // true
+// // rest.clear();
+// rest.delete(2); 
+// console.log(rest.size);
 
-const arr = [1,2]
-rest.set(arr, 'Test');
-// rest.set([1,2], 'Test');
-console.log(rest.get([1,2])); // returns undefined (NOT 'Test', because they are not the same object in the heap)
+// const arr = [1,2]
+// rest.set(arr, 'Test');
+// // rest.set([1,2], 'Test');
+// console.log(rest.get([1,2])); // returns undefined (NOT 'Test', because they are not the same object in the heap)
 
-rest.set(document.querySelector('h1'), 'Heading');
+// rest.set(document.querySelector('h1'), 'Heading');
+
+// Maps: Iteratıons
+
+const question = new Map([
+  ['question','What is the best programming language in the world?'],
+  [1, 'C'],
+  [2,'Java'],
+  [3, 'Javascirpt'],
+  ['correct', 3],
+  [true, 'Correct 🥳'],
+  [false, 'Try again!']
+]);
+console.log(question);
+
+// Convert object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Quiz app
+
+console.log(question.get('question'));
+
+for(const [key,value] of question) {
+  typeof key == 'number' ? console.log(`Answer ${key}: ${value}`) : ''
+}
+
+// const answer = Number(prompt('Your answer'));
+const answer = 3;
+answer === question.get('correct') ? console.log(question.get(true)) : console.log(question.get(false));
+
+// Convert map to array 
+console.log(question); // map, (object in the object)
+console.log([...question]) // array (arrays in an array)
+// console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+
 
 // --------------- SETS ------------
 
