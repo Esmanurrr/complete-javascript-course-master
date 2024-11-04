@@ -55,53 +55,53 @@ const restaurant = {
 
 // ---------------- WORKING WITH STRINGS ----------------
 
-const airline = 'TAP Air Portugal';
+// const airline = 'TAP Air Portugal';
 // const plane = 'A320';
 
 // console.log(plane[0]); // A
 // console.log(plane[1]); // 3
 // console.log(plane[2]); // 2
-console.log('B737'[0]); // B
+// console.log('B737'[0]); // B
 
-console.log(airline.length); // 16
-console.log('B737'.length); // 4
+// console.log(airline.length); // 16
+// console.log('B737'.length); // 4
 
-console.log(airline.indexOf('r')); // 6 (r is in index of 6)
-console.log(airline.lastIndexOf('r')); // 10 (last r is in index of 10)
-console.log(airline.indexOf('Portugal')); // 8 (case sensitiv - if we search 'portugal' then returns -1)
+// console.log(airline.indexOf('r')); // 6 (r is in index of 6)
+// console.log(airline.lastIndexOf('r')); // 10 (last r is in index of 10)
+// console.log(airline.indexOf('Portugal')); // 8 (case sensitiv - if we search 'portugal' then returns -1)
 
-console.log(airline.slice(4)); // Air Portugal (argument is begin parameter)
-console.log(airline.slice(4, 7)); // Air (begin, finish parameter), length of this string is (finish - start)
+// console.log(airline.slice(4)); // Air Portugal (argument is begin parameter)
+// console.log(airline.slice(4, 7)); // Air (begin, finish parameter), length of this string is (finish - start)
 
-console.log(airline.slice(0, airline.indexOf(' ')));
-console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // + 1 is for not to get space char 
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1)); // + 1 is for not to get space char 
 
-console.log(airline.slice(-2)); // al (last 2 letters)
-console.log(airline.slice(1, -1)); // AP Air Portuga
+// console.log(airline.slice(-2)); // al (last 2 letters)
+// console.log(airline.slice(1, -1)); // AP Air Portuga
 
-const checkMiddleSeat = function(seat){
+// const checkMiddleSeat = function(seat){
    // B and E is in the middle
-   const s = seat.slice(-1);
-   if(s === 'B' || s === 'E') console.log("You got the middle seat 😐");
-   else console.log("You are lucky 🥳")
-}
+//    const s = seat.slice(-1);
+//    if(s === 'B' || s === 'E') console.log("You got the middle seat 😐");
+//    else console.log("You are lucky 🥳")
+// }
 
-checkMiddleSeat('11B');
-checkMiddleSeat('23C');
-checkMiddleSeat('3E');
+// checkMiddleSeat('11B');
+// checkMiddleSeat('23C');
+// checkMiddleSeat('3E');
 
 // Strings are primitive, how they got the methods? 
 // whenever we call a method on a string, javascript will automaticly in behind the scenes convert that string primitive to string object with the same content
 // and then it is on that object were the methods are called.
 // this process is called BOXING
 
-console.log(new String('jonas')); // this conversion is what javascript does behind the scenes whenever we call a method on a string, when operation is done the object converted back to a regular string primitive
-console.log(typeof new String('jonas')); // object
+// console.log(new String('jonas')); // this conversion is what javascript does behind the scenes whenever we call a method on a string, when operation is done the object converted back to a regular string primitive
+// console.log(typeof new String('jonas')); // object
 // all string methods return primitive, even if called on a string object
-console.log(typeof new String('jonas').slice(-1)); // string 
+// console.log(typeof new String('jonas').slice(-1)); // string 
 
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
 
 // Fix capitalization in name
 // const passenger = 'jOnAS'; // Jonas
@@ -111,102 +111,102 @@ console.log(airline.toUpperCase());
 // console.log(passengerCorrect);
 
 // Comparing emails
-const email = 'hello@jonas.io';
-const loginEmail = '  Hello@Jonas.Io \n';
+// const email = 'hello@jonas.io';
+// const loginEmail = '  Hello@Jonas.Io \n';
 
 // const lowerEmal = loginEmail.toLowerCase();
 // const trimmedEmail = lowerEmal.trim();
-const normalizedEmail = loginEmail.toLowerCase().trim();
+// const normalizedEmail = loginEmail.toLowerCase().trim();
 
-console.log(normalizedEmail);
-console.log(email === normalizedEmail);
+// console.log(normalizedEmail);
+// console.log(email === normalizedEmail);
 
 // Replacing
-const priceGB = '288,97£';
-const priceUS = priceGB.replace('£','$').replace(',','.') ; // (what we want to replace, string that will replace the first one)
-console.log(priceUS);
+// const priceGB = '288,97£';
+// const priceUS = priceGB.replace('£','$').replace(',','.') ; // (what we want to replace, string that will replace the first one)
+// console.log(priceUS);
 
-const announcement = 'All passengers come to boarding door 23. Boarding door 23!'
-console.log(announcement.replace('door', 'gate')); // only replaces first 'door'
+// const announcement = 'All passengers come to boarding door 23. Boarding door 23!'
+// console.log(announcement.replace('door', 'gate')); // only replaces first 'door'
 // console.log(announcement.replaceAll('door', 'gate')) // all 'door' replaces to 'gate'
-console.log(announcement.replace(/door/g, 'gate')); // replace all with regular expressions
+// console.log(announcement.replace(/door/g, 'gate')); // replace all with regular expressions
 
 // Booleans
-const plane = 'Airbus A320neo';
-console.log(plane.includes('A320')); // true
-console.log(plane.includes('Boeing')); // false
-console.log(plane.startsWith('Airb')); // true
+// const plane = 'Airbus A320neo';
+// console.log(plane.includes('A320')); // true
+// console.log(plane.includes('Boeing')); // false
+// console.log(plane.startsWith('Airb')); // true
 
-if(plane.startsWith('Airbus') && plane.endsWith('neo')){
-  console.log('Part of the NEW airbus family');
-}
+// if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+//   console.log('Part of the NEW airbus family');
+// }
 
 // Practice exercise
-const checkBaggage = function(items){
- const baggage = items.toLowerCase();
- if(baggage.includes('knife') || baggage.includes('gun')){
-  console.log('You are NOT allowed on board');
- } else {
-  console.log('Welcome aboard');
- }
-}
+// const checkBaggage = function(items){
+//  const baggage = items.toLowerCase();
+//  if(baggage.includes('knife') || baggage.includes('gun')){
+//   console.log('You are NOT allowed on board');
+//  } else {
+//   console.log('Welcome aboard');
+//  }
+// }
 
-checkBaggage('I have a laptop, some Food and a pocket Knife');
-checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
+// checkBaggage('I have a laptop, some Food and a pocket Knife');
+// checkBaggage('Socks and camera');
+// checkBaggage('Got some snacks and a gun for protection');
 
 // Split and Join
 
-console.log('a+very+nice+string'.split('+')); // ['a','very','nice','string']
-console.log('Jonas Schmedtmann'.split(' ')); // ['Jonas','Schmedtmann']
+// console.log('a+very+nice+string'.split('+')); // ['a','very','nice','string']
+// console.log('Jonas Schmedtmann'.split(' ')); // ['Jonas','Schmedtmann']
 
-const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+// const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizeName = function(name){
-  const names = name.split(' ');
-  const namesUpper = [];
+// const capitalizeName = function(name){
+//   const names = name.split(' ');
+//   const namesUpper = [];
 
-  for (const n of names){
+//   for (const n of names){
     // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  console.log(namesUpper.join(' '));
-}
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
 
-capitalizeName('jessica ann smith davis');
-capitalizeName('jonas schmedtmann');
-capitalizeName('esmanur mazlum');
+// capitalizeName('jessica ann smith davis');
+// capitalizeName('jonas schmedtmann');
+// capitalizeName('esmanur mazlum');
 
 // Padding
-const message = 'Go to gate 23!'
-console.log(message.padStart(20, '+').padEnd(30, '+')); // (how many length should be?, what we add for it?)
-console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
+// const message = 'Go to gate 23!'
+// console.log(message.padStart(20, '+').padEnd(30, '+')); // (how many length should be?, what we add for it?)
+// console.log('Jonas'.padStart(20, '+').padEnd(30, '+'));
 
-const maskCreditCard = function(number){
-  const str = number + ''; // convert number to string
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
+// const maskCreditCard = function(number){
+//   const str = number + ''; // convert number to string
+//   const last = str.slice(-4);
+//   return last.padStart(str.length, '*');
 
-}
+// }
 
-console.log(maskCreditCard(3242242));
-console.log(maskCreditCard(423425443453323));
-console.log(maskCreditCard('585438399539539583'));
+// console.log(maskCreditCard(3242242));
+// console.log(maskCreditCard(423425443453323));
+// console.log(maskCreditCard('585438399539539583'));
 
 // Repeat 
-const message2 = 'Bad weather... All Departures Delayed... ';
-console.log(message2.repeat(5));
+// const message2 = 'Bad weather... All Departures Delayed... ';
+// console.log(message2.repeat(5));
 
-const planeInLine = function(n){
-  console.log(`There are ${n} plane in line ${'✈️'.repeat(n)}`);
-}
+// const planeInLine = function(n){
+//   console.log(`There are ${n} plane in line ${'✈️'.repeat(n)}`);
+// }
 
-planeInLine(3);
-planeInLine(7);
-planeInLine(12);
+// planeInLine(3);
+// planeInLine(7);
+// planeInLine(12);
 
 
 // ------------- MAPS ------------
