@@ -246,19 +246,62 @@ const addTax = function(rate){
 
 // a closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
 
-const secureBooking = function(){
-    let passengerCount = 0;
+// const secureBooking = function(){
+//     let passengerCount = 0;
 
-    return function(){
-        passengerCount++;
-        console.log(`${passengerCount} passengers`);
+//     return function(){
+//         passengerCount++;
+//         console.log(`${passengerCount} passengers`);
+//     };
+// };
+
+// const booker = secureBooking();
+
+// booker();
+// booker();
+// booker();
+
+// console.dir(booker); // we can see closure in the [[scopes]] 
+
+// Example 1 
+
+let f;
+
+const g = function(){
+    const a = 23;
+    f = function(){
+        console.log(a * 2); // 46
     };
 };
 
-const booker = secureBooking();
+const h = function(){
+    const b = 777;
+    f = function(){
+        console.log(b * 2); // 1554
+    };
+};
 
-booker();
-booker();
-booker();
+g();
+f();
+console.dir(f);
 
-console.dir(booker); // we can see closure in the [[scopes]] 
+// re-assigning f function
+h();
+f();
+console.log(f);
+
+// Example 2
+
+const boardPassengers = function(n, wait){
+    const perGroup = n / 3;
+
+    setTimeout(function ()  {
+        console.log(`We are now boarding all ${n} passengers`);
+        console.log(`There are 3 groups, eacht with ${perGroup} passengers`);
+    }, wait * 1000);
+
+    console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000; // closure has priority, so it didnt use this variable
+boardPassengers(180,3);
