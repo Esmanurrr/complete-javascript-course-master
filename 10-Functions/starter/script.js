@@ -181,24 +181,24 @@ const bookEW = book.bind(eurowings);
 const bookLH = book.bind(lufthansa);
 const bookLX = book.bind(swiss);
 
-bookEW(23, 'Steven Wiliams');
+// bookEW(23, 'Steven Wiliams');
 
 const bookEW23 = book.bind(eurowings, 23);
-bookEW23('Jonas Schmedtmann');
-bookEW23('Martha Cooper');
+// bookEW23('Jonas Schmedtmann');
+// bookEW23('Martha Cooper');
 
 // With event listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function(){
-    console.log(this); // refers the element button (if we use just lufthansa.buyPlane in addEventListener)
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function(){
+//     console.log(this); // refers the element button (if we use just lufthansa.buyPlane in addEventListener)
 
-    this.planes++;
-    console.log(this.planes)
-};
+//     this.planes++;
+//     console.log(this.planes)
+// };
 
 // lufthansa.buyPlane();
 
-document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); // bind(lufthansa) binds the buyPlane function to the lufthansa object. That is, this will always be lufthansa, no matter what context it is called in.
+// document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); // bind(lufthansa) binds the buyPlane function to the lufthansa object. That is, this will always be lufthansa, no matter what context it is called in.
 
 // Partial Application
 
@@ -217,4 +217,22 @@ const addTax = function(rate){
     }
 }
 
-console.log(addTax(0.1)(23));
+// console.log(addTax(0.1)(23));
+
+
+// --------------------- IMMEDIATELY INVOKE FUNCTION EXPRESSIONS ----------------
+
+const runOnce = function(){
+    console.log('this will never run again');
+};
+runOnce(); // but it can run so many times
+
+// IIFE
+(function(){
+    console.log('This will never run again');
+    const isPrivate = 23;
+})();
+
+console.log(isPrivate); // error
+
+(() => console.log('This will ALSO never run again'))();
