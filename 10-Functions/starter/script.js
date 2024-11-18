@@ -68,6 +68,9 @@
 
 // ------------- FUNCTIONS ACCEPTING CALLBACK FUNCTIONS -------------
 
+// Abstraction means hiding the details of complex operations to simplify them and make them reusable.
+// It creates a reusable structure by making frequently used operations in the code more general. This way, we can work with a "higher level" mindset without focusing on unnecessary details.
+
 const oneWord = function(str){
     return str.replace(/ /g, '').toLowerCase();
 };
@@ -93,9 +96,9 @@ transformer('JavaScript is the best!', oneWord);
 const high5 = function (){
     console.log('🖐️');
 };
-document.body.addEventListener('click', high5);
-['Jonas', 'Martha', 'Adam'].forEach(high5);
+document.body.addEventListener('click', high5); // addEventListener provides abstraction; it does not know the details of the click, it just calls a callback function.
+['Jonas', 'Martha', 'Adam'].forEach(high5); // forEach provides abstraction. It abstracts the operation on each element of an array, hiding the details.
 
 
-// advantage 1 : callback functions make it easy to split up or code into more reusable and interconnected parts
+// advantage 1 : callback functions make it easy to split up our code into more reusable and interconnected parts
 // advantage 2 : callback functions allow us to create abstraction
