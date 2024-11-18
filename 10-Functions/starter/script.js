@@ -29,14 +29,14 @@
 // ------------ HOW PASSING ARGUMENTS WORKS : VALUE VS. REFERENCE ------------
 
 // const flight = 'LH234';
-// const jonas = {
+// const jonas = { // reference type.
 //     name: 'Jonas Schmedtmann',
 //     passport: 342523423
 // }
 
 // const checkIn = function(flightNum, passenger){
-//     flightNum = 'LH999';
-//     passenger.name = 'Mr.' + passenger.name;
+//     flightNum = 'LH999'; // copy of flight variable, because of primitive type. (e.g. number, boolean, null, undefined, symbol, bigint. They are stored as value in memory.  These values pass by value to a function)
+//     passenger.name = 'Mr.' + passenger.name; // when an object pass to a function, memory address copied. so it is manipulated
 
 //     if(passenger.passport === 342523423){
 //         alert('Checked In!');
@@ -47,7 +47,7 @@
 
 // checkIn(flight, jonas);
 // console.log(flight);
-// console.log(jonas);
+// console.log(jonas); //  { name: 'Mr.Jonas Schmedtmann', passport: 342523423 }  jonas object is manipulated because it refers same memory object
 
 // const newPassport = function(person){
 //     person.passport = Math.trunc(Math.random() * 100000000);
@@ -57,6 +57,13 @@
 // checkIn(flight, jonas);
 
 // Javascript does not have passing by reference, Javascript only passing by value 
+// That is, when you send a variable to a function, a value is always sent, not the variable itself.
+// In primitive types: 
+// With primitive types, the value is copied directly.
+// Therefore, if changes are made within the function, this change only affects the copied value, not the original variable.
+// In reference types:
+// With reference types, a copy of the address of the original data in memory is transferred.
+// Therefore, changes made to an object or array have an effect on the original data. However, this is still considered pass by value, because what is sent is actually the value of the reference (the address itself).
 // We pass a reference to the function but we do not pass by a reference
 
 // ------------- FUNCTIONS ACCEPTING CALLBACK FUNCTIONS -------------
