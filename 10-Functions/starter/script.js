@@ -222,17 +222,43 @@ const addTax = function(rate){
 
 // --------------------- IMMEDIATELY INVOKE FUNCTION EXPRESSIONS ----------------
 
-const runOnce = function(){
-    console.log('this will never run again');
-};
-runOnce(); // but it can run so many times
+// const runOnce = function(){
+    // console.log('this will never run again');
+// };
+// runOnce(); // but it can run so many times
 
 // IIFE
-(function(){
-    console.log('This will never run again');
-    const isPrivate = 23;
-})();
+// (function(){
+//     console.log('This will never run again');
+//     const isPrivate = 23;
+// })();
 
-console.log(isPrivate); // error
+// console.log(isPrivate); // error
 
-(() => console.log('This will ALSO never run again'))();
+// (() => console.log('This will ALSO never run again'))();
+
+
+// --------------- CLOSURES -----------------
+
+// Closure is defined in JavaScript as the ability of a function to access variables in the context it is defined in. Closure allows a function to access variables belonging to a function outside of itself, even if the execution time of that function has ended.
+
+// a closure is the closed-over variable environment of the execution context in which a function was created, even after that execution context is gone
+
+// a closure gives a function access to all the variables of its parent function, even after that parent function has returned. The function keeps a reference to its outer scope, which preserves the scope chain throughout time.
+
+const secureBooking = function(){
+    let passengerCount = 0;
+
+    return function(){
+        passengerCount++;
+        console.log(`${passengerCount} passengers`);
+    };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker); // we can see closure in the [[scopes]] 
