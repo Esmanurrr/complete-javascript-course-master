@@ -149,11 +149,11 @@ const book = lufthansa.book; // seperate function from lufthansa's book function
 // book(23, 'Sarah William'); // Uncaught TypeError: Cannot property 'airline' of undefined 
 
 // Call Method 
-book.call(eurowings, 23, 'Sarah Williams'); // Sarah Williams booked a seat on Eurowings flight EW23
-console.log(eurowings);
+// book.call(eurowings, 23, 'Sarah Williams'); // Sarah Williams booked a seat on Eurowings flight EW23
+// console.log(eurowings);
 
-book.call(lufthansa, 239, 'Mary Cooper'); // Mary Cooper booked a seat on Lufthansa flight LH239
-console.log(lufthansa);
+// book.call(lufthansa, 239, 'Mary Cooper'); // Mary Cooper booked a seat on Lufthansa flight LH239
+// console.log(lufthansa);
 
 const swiss = {
     airline: 'Swiss Air Lines',
@@ -161,12 +161,60 @@ const swiss = {
     bookings: []
 }
 
-book.call(swiss, 583, 'Mary Cooper'); // Mary Cooper booked a seat on Swiss Air Lines flight LX583
-console.log(swiss);
+// book.call(swiss, 583, 'Mary Cooper'); // Mary Cooper booked a seat on Swiss Air Lines flight LX583
+// console.log(swiss);
 
 // Apply Method
-const flightData = [583, 'George Cooper'];
-book.apply(swiss, flightData); // apply method should get an array as an argument
-console.log(swiss);
+// const flightData = [583, 'George Cooper'];
+// book.apply(swiss, flightData); // apply method should get an array as an argument
+// console.log(swiss);
 
-book.call(swiss, ...flightData); // call method takes parameters individually when calling a function.
+// book.call(swiss, ...flightData); // call method takes parameters individually when calling a function.
+
+
+// ----------------- THE BIND METHOD -----------------
+
+// bind not immediately call the function, instead it returns a new function where the this keyword is bound. So it's set to whatever value we pass into bind
+// The bind method is used to manually specify the context (i.e. this) for a function.
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Wiliams');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+
+// With event listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function(){
+    console.log(this); // refers the element button (if we use just lufthansa.buyPlane in addEventListener)
+
+    this.planes++;
+    console.log(this.planes)
+};
+
+// lufthansa.buyPlane();
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa)); // bind(lufthansa) binds the buyPlane function to the lufthansa object. That is, this will always be lufthansa, no matter what context it is called in.
+
+// Partial Application
+
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
+
+// const addVAT = addTax.bind(null, 0.23); // first argument is for this keyword, so there is no this context in arrow function, that we use null as argument
+// addVAT = value => value + value * 0.23
+
+// console.log(addVAT(100));
+// console.log(addVAT(23));
+
+const addTax = function(rate){
+    return value => {
+        return value + value * rate;
+    }
+}
+
+console.log(addTax(0.1)(23));
