@@ -224,3 +224,12 @@ currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
 })
 
 */
+
+// ----------  DATA TRANSFORMATIONS WITH MAP, FILTER AND REDUCE -----------
+
+// MAP : create a brand new array based on the original array.
+//  takes an array, loops over that array and in each iteration it applies a callback function that we specify on our code to the current array element
+
+// FILTER : returns a new array containing the array elements that passed a specified test condition
+
+// REDUCE : boils ("reduces") all array elements down to one single value. no new array, only reduces value.
