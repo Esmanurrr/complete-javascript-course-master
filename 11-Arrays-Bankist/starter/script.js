@@ -233,3 +233,28 @@ currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
 // FILTER : returns a new array containing the array elements that passed a specified test condition
 
 // REDUCE : boils ("reduces") all array elements down to one single value. no new array, only reduces value.
+
+
+// --------- MAP -------------
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+// const movementsUSD = movements.map(function(mov){ // functional programming
+//   return mov * eurToUsd;
+// });
+
+const movementsUSD = movements.map((mov) => mov * eurToUsd);
+
+console.log(movements);
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for(const mov of movements) movementsUSDfor.push(mov * eurToUsd); // what map function actually do?
+
+const movementDescriptions = movements.map((mov, i) => {
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+}); // returned one array 
+
+console.log(movementDescriptions);
