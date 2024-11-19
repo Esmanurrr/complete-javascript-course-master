@@ -65,11 +65,11 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -79,13 +79,13 @@ const currencies = new Map([
 
 /*
 
-// why do array have methods?
-// methods are simply functions that we can call on objects, they are functions atteched objects
-// if array has a method, that refers they are an object
+! why do array have methods?
+! methods are simply functions that we can call on objects, they are functions atteched objects
+! if array has a method, that refers they are an object
 
 let arr = ['a', 'b', 'c','d','e'];
 
-// slice - does not change the array
+* slice - does not change the array
 console.log(arr.slice(2)); // start parameter
 console.log(arr.slice(2, 4)); // start and end parameter
 console.log(arr.slice(-2)); // last 2 elements
@@ -95,25 +95,25 @@ console.log(arr.slice()); // shallow copy
 console.log([...arr]); // shallow copy - you can use both of them
 
 
-// splice - mutate the array
+* splice - mutate the array
 // console.log(arr.splice((2))); // ['c','d','e'];
 arr.splice(-1); // delete last element
 console.log(arr);
 arr.splice(1, 2); // start and deleteCount
 console.log(arr); // ['a', 'b'] - splice method deleted the other 3 element from actual array
 
-// reverse - ALSO mutate the array
+* reverse - ALSO mutate the array
 arr = ['a', 'b', 'c','d','e'];
 const arr2 = ['j', 'i', 'h', 'g', 'f'];
 console.log(arr2.reverse()); //  ['f', 'g', 'h', 'i', 'j']
 console.log(arr2); //  ['f', 'g', 'h', 'i', 'j']
 
-// concat - does not mutate the original array.
+* concat - does not mutate the original array.
 const letters = arr.concat(arr2);
 console.log(letters);
 console.log([...arr, ...arr2]); // same thing - you can use whatever you want
 
-// join 
+* join 
 console.log(letters.join(' - ')); // result is STRING 
 
 */
@@ -125,7 +125,7 @@ const arr = [23, 11, 64];
 console.log(arr[0]); // if you want to quickly get an element, you should use index of array
 console.log(arr.at(0));
 
-// getting last array element
+* getting last array element
 console.log(arr[arr.length - 1]); // we can not arr[-1] because in js index should be 0 or positive number. 
 console.log(arr.slice(-1)[0]); 
 console.log(arr.at(-1)); // if you want to last element of array or if you want to order from last element, you can use at(). Also if you want to use method chaining you can use at()
@@ -136,6 +136,8 @@ console.log('jonas'.at(-1)); // s
 
 
 // ----------- LOOPING ARRAYS: FOREACH LOOP ---------------
+
+/*
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -149,9 +151,9 @@ for(const [i, movement] of movements.entries()){
 }
 
 
-// forEach : requires callback function, higher-order function.
-// when foreach loop on each element, callback function get these elements individually as argument 
-// you can not BREAK from forEach. Conitnue and Break statements are not in forEach. if you must use break or continue statement you should use for loop
+! forEach : requires callback function, higher-order function.
+! when foreach loop on each element, callback function get these elements individually as argument 
+! you can not BREAK from forEach. Conitnue and Break statements are not in forEach. if you must use break or continue statement you should use for loop
 
 movements.forEach(function(movement, index, array) { // order is important
   if(movement > 0){
@@ -161,6 +163,31 @@ movements.forEach(function(movement, index, array) { // order is important
   }
 });
 
-// 0: function(200);
-// 1: function(450);
-// 2: function(-400);
+* 0: function(200);
+* 1: function(450);
+* 2: function(-400);
+
+*/
+
+
+// -------------- FOREACH WİTH MAPS AND SETS ---------------
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+// forEach in maps arguments are should be value, key and map
+
+currencies.forEach(function(value, key, map){
+  console.log(`${key}: ${value}`);
+});
+
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+// sets have no key
+currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
+  console.log(`${value}: ${value}`);
+})
