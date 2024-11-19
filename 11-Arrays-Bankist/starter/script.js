@@ -71,7 +71,7 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -120,6 +120,7 @@ console.log(letters.join(' - ')); // result is STRING
 
 // -------------------------- THE NEW AT METHOD -----------------
 
+/*
 const arr = [23, 11, 64];
 console.log(arr[0]); // if you want to quickly get an element, you should use index of array
 console.log(arr.at(0));
@@ -131,3 +132,35 @@ console.log(arr.at(-1)); // if you want to last element of array or if you want 
 
 console.log('jonas'.at(0)); // j
 console.log('jonas'.at(-1)); // s
+*/
+
+
+// ----------- LOOPING ARRAYS: FOREACH LOOP ---------------
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// for (const movement of movements){
+for(const [i, movement] of movements.entries()){
+  if(movement > 0){
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+
+// forEach : requires callback function, higher-order function.
+// when foreach loop on each element, callback function get these elements individually as argument 
+// you can not BREAK from forEach. Conitnue and Break statements are not in forEach. if you must use break or continue statement you should use for loop
+
+movements.forEach(function(movement, index, array) { // order is important
+  if(movement > 0){
+    console.log(`Movement ${index + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+});
+
+// 0: function(200);
+// 1: function(450);
+// 2: function(-400);
