@@ -74,3 +74,41 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// why do array have methods?
+// methods are simply functions that we can call on objects, they are functions atteched objects
+// if array has a method, that refers they are an object
+
+let arr = ['a', 'b', 'c','d','e'];
+
+// slice - does not change the array
+console.log(arr.slice(2)); // start parameter
+console.log(arr.slice(2, 4)); // start and end parameter
+console.log(arr.slice(-2)); // last 2 elements
+console.log(arr.slice(-1)); // last element
+console.log(arr.slice(1, -2));
+console.log(arr.slice()); // shallow copy
+console.log([...arr]); // shallow copy - you can use both of them
+
+
+// splice - mutate the array
+// console.log(arr.splice((2))); // ['c','d','e'];
+arr.splice(-1); // delete last element
+console.log(arr);
+arr.splice(1, 2); // start and deleteCount
+console.log(arr); // ['a', 'b'] - splice method deleted the other 3 element from actual array
+
+// reverse - ALSO mutate the array
+arr = ['a', 'b', 'c','d','e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse()); //  ['f', 'g', 'h', 'i', 'j']
+console.log(arr2); //  ['f', 'g', 'h', 'i', 'j']
+
+// concat - does not mutate the original array.
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]); // same thing - you can use whatever you want
+
+// join 
+console.log(letters.join(' - ')); // result is STRING 
+
