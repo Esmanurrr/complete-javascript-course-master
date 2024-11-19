@@ -75,6 +75,10 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// ----------------- SIMPLE ARRAY METHODS -----------------
+
+/*
+
 // why do array have methods?
 // methods are simply functions that we can call on objects, they are functions atteched objects
 // if array has a method, that refers they are an object
@@ -112,3 +116,18 @@ console.log([...arr, ...arr2]); // same thing - you can use whatever you want
 // join 
 console.log(letters.join(' - ')); // result is STRING 
 
+*/
+
+// -------------------------- THE NEW AT METHOD -----------------
+
+const arr = [23, 11, 64];
+console.log(arr[0]); // if you want to quickly get an element, you should use index of array
+console.log(arr.at(0));
+
+// getting last array element
+console.log(arr[arr.length - 1]); // we can not arr[-1] because in js index should be 0 or positive number. 
+console.log(arr.slice(-1)[0]); 
+console.log(arr.at(-1)); // if you want to last element of array or if you want to order from last element, you can use at(). Also if you want to use method chaining you can use at()
+
+console.log('jonas'.at(0)); // j
+console.log('jonas'.at(-1)); // s
