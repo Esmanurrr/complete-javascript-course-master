@@ -61,41 +61,67 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-
-const displayMovements = function(movements){
+const displayMovements = function (movements) {
   containerMovements.innerHTML = ''; // or .textContent = 0;
 
-  movements.forEach(function(mov, i){
+  movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
+        <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
         <div class="movements__value">${mov}€</div>
       </div>
     `;
 
     containerMovements.insertAdjacentHTML('afterbegin', html); // position, and string
   });
-}
+};
 
 displayMovements(account1.movements);
 
-const calcDisplayBalance = function(movements){
-  const balance = movements.reduce((acc, mov) => acc+mov, 0);
-  labelBalance.textContent = `${balance} EUR`
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
 };
 calcDisplayBalance(account1.movements);
 
-const createUsernames = function(accs){
-  accs.forEach(function(acc){
-    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join(''); // created a new property on the account element
-  })
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calcDisplaySummary(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join(''); // created a new property on the account element
+  });
 };
 
 createUsernames(accounts);
-
-
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -170,7 +196,6 @@ console.log('jonas'.at(0)); // j
 console.log('jonas'.at(-1)); // s
 */
 
-
 // ----------- LOOPING ARRAYS: FOREACH LOOP ---------------
 
 /*
@@ -204,7 +229,6 @@ movements.forEach(function(movement, index, array) { // order is important
 * 2: function(-400);
 
 */
-
 
 // -------------- FOREACH WİTH MAPS AND SETS ---------------
 
@@ -242,7 +266,6 @@ currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
 
 // REDUCE : boils ("reduces") all array elements down to one single value. no new array, only reduces value.
 
-
 // --------- MAP -------------
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -263,10 +286,9 @@ currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
 
 // const movementDescriptions = movements.map((mov, i) => {
 //   `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
-// }); // returned one array 
+// }); // returned one array
 
 // console.log(movementDescriptions);
-
 
 // --------- THE FILTER METHOD -------------
 
@@ -289,7 +311,7 @@ currenciesUnique.forEach(function(value, _, map){ // _ is unnecessary variable
 
 // --------- THE REDUCE METHOD -------------
 
-console.log(movements);
+// console.log(movements);
 
 // accumulator => snowball
 // const balance = movements.reduce(function(acc, cur, i, arr){
@@ -297,18 +319,32 @@ console.log(movements);
 //   return acc + cur;
 // }, 0); // 0 is initial value of accumulator
 
-const balance = movements.reduce((acc, cur) => acc+cur, 0); 
-console.log(balance);
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// console.log(balance);
 
 let balance2 = 0;
-for(const mov of movements) balance2 += mov;
-console.log(balance2);
+for (const mov of movements) balance2 += mov;
+// console.log(balance2);
 
-// maximum value 
+// maximum value
 
 const maxValue = movements.reduce((acc, cur) => {
-  if (acc > cur) return acc; 
+  if (acc > cur) return acc;
   else return cur;
-}, movements[0]); 
+}, movements[0]);
 
-console.log(maxValue);
+// console.log(maxValue);
+
+// --------- THE MAGIC OF CHAINING METHODS -------------
+
+const eurToUsd = 1.1;
+
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    // console.log(arr);
+    return mov * eurToUsd;
+  })
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
