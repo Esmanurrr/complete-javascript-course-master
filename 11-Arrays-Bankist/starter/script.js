@@ -167,8 +167,27 @@ btnTransfer.addEventListener('click', function(e){
     receiverAcc.movements.push(amount);
 
     updateUI(currentAccount);
-  }
-})
+  };
+});
+
+btnClose.addEventListener('click', function(e){
+  e.preventDefault();
+  
+  if(currentAccount.username === inputCloseUsername.value && currentAccount.pin === Number(inputClosePin.value)){
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username); // findIndex method work with callback function
+    
+    //.indexOf(23) -> we can just search the element of array, not write an complex condition
+    
+    // delete account
+    accounts.splice(index, 1);
+    
+    // Hide UI
+    containerApp.style.opacity = 0;
+  };
+
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
