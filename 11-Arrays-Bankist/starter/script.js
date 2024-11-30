@@ -118,16 +118,16 @@ const createUsernames = function (accs) {
 
 createUsernames(accounts);
 
-const updateUI = function(acc){
-   // Display movements
-   displayMovements(acc.movements);
+const updateUI = function (acc) {
+  // Display movements
+  displayMovements(acc.movements);
 
-   // Display balance
-   calcDisplayBalance(acc);
+  // Display balance
+  calcDisplayBalance(acc);
 
-   // Display summary
-   calcDisplaySummary(acc);
-}
+  // Display summary
+  calcDisplaySummary(acc);
+};
 
 // Event Handlers
 let currentAccount;
@@ -156,53 +156,64 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
-btnTransfer.addEventListener('click', function(e){
+btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
   console.log(amount, receiverAcc);
 
-  if(amount > 0 && receiverAcc && currentAccount.balance >= amount && receiverAcc?.username !== currentAccount.username){
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
     updateUI(currentAccount);
-  };
+  }
 });
 
-btnLoan.addEventListener('click', function(e){
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
   const amount = Number(inputLoanAmount.value);
 
-  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
-    // add movement 
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // add movement
     currentAccount.movements.push(amount);
 
     // update UI
     updateUI(currentAccount);
-  };
+  }
   inputLoanAmount.value = '';
-})
+});
 
-btnClose.addEventListener('click', function(e){
+btnClose.addEventListener('click', function (e) {
   e.preventDefault();
-  
-  if(currentAccount.username === inputCloseUsername.value && currentAccount.pin === Number(inputClosePin.value)){
-    const index = accounts.findIndex(acc => acc.username === currentAccount.username); // findIndex method work with callback function
-    
+
+  if (
+    currentAccount.username === inputCloseUsername.value &&
+    currentAccount.pin === Number(inputClosePin.value)
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    ); // findIndex method work with callback function
+
     //.indexOf(23) -> we can just search the element of array, not write an complex condition
-    
+
     // delete account
     accounts.splice(index, 1);
-    
+
     // Hide UI
     containerApp.style.opacity = 0;
-  };
+  }
 
   inputCloseUsername.value = inputClosePin.value = '';
 });
-
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -444,19 +455,52 @@ const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 // --------- THE SOME METHOD -------------
 
 // equality
-console.log(movements.includes(-130)); // returns true 
+// console.log(movements.includes(-130)); // returns true
 
 //some: condition
-console.log(movements.some(mov => mov === -130));
+// console.log(movements.some(mov => mov === -130));
 
 const anyDeposits = movements.some(mov => mov > 0); //returns true
 
 // evevry
-console.log(movements.every(mov => mov > 0)); // false
-console.log(account4.movements.every(mov => mov > 0)); // true because all of the element is positiv
+// console.log(movements.every(mov => mov > 0)); // false
+// console.log(account4.movements.every(mov => mov > 0)); // true because all of the element is positiv
 
 // seperate callback
 const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
+
+// ------------ FLAT AND FLATMAP -------------------
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat()); // [Array(2), 3, 4, Array(2), 7, 8]
+console.log(arrDeep.flat(2)); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements);
+// const allMovements = accountMovements.flat();
+// console.log(allMovements); // all movements are in one array
+// const overalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+
+// flat
+const overalBalance = accounts
+.map(acc => acc.movements)
+.flat()
+.reduce((acc, cur) => acc + cur, 0);
+
+console.log(accounts.map(acc => acc.movements)); // sub arrays in one array
+console.log(overalBalance);
+
+// flatMap
+console.log(accounts.flatMap(acc => acc.movements)); // all movements are in one array
+
+const overalBalance2 = accounts
+.flatMap(acc => acc.movements)
+.reduce((acc, cur) => acc + cur, 0);
+
+console.log(overalBalance2);
