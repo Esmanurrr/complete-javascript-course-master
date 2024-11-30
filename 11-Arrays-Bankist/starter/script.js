@@ -486,7 +486,7 @@ const deposit = mov => mov > 0;
 
 // ------------ FLAT AND FLATMAP -------------------
 
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 // console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
 
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
@@ -520,11 +520,11 @@ const overalBalance2 = accounts
 // ------------ SORTING ARRAYS -------------------
 
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort()); // mutate the actual array
-console.log(owners);
+// console.log(owners.sort()); // mutate the actual array
+// console.log(owners);
 
 // Numbers
-console.log(movements);
+// console.log(movements);
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // return < 0, A, B (keep order)
@@ -538,7 +538,7 @@ console.log(movements);
 
 movements.sort((a,b) => a - b); // ascending, if a-b is positive, return 1 so they change places.
 
-console.log(movements);
+// console.log(movements);
 
 // descending
 // movements.sort((a, b) => {
@@ -548,6 +548,40 @@ console.log(movements);
 
 movements.sort((a,b) => b - a); // descending, because b-a is positive, return 1 so they change places
 
+// console.log(movements);
 
-console.log(movements);
+
+// -------- MORE WAYS OF CREATING AND FILLING ARRAYS ------
+
+const arr = [1,2,3,4,5,6,7];
+console.log(new Array([1,2,3,4,5,6,7]));
+
+const x = new Array(7); // empty array
+console.log(x);
+// console.log(x.map(()=>5)); // doesnt work
+x.fill(1,3,5); // value, start, end
+x.fill(1); // all elements are 1
+console.log(x);
+
+arr.fill(23, 2, 6);
+console.log(arr);
  
+// Array.from()
+
+const y = Array.from({length: 7}, () => 1);
+console.log(y);
+
+const z = Array.from({length: 7}, (_, i) => i + 1);
+console.log(z);
+
+labelBalance.addEventListener('click', function(){
+  const movementUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    (el => Number(el.textContent.replace('€','')))
+  );
+
+  console.log(movementUI);
+
+  const movementUI2 = [...document.querySelectorAll('.movements__value')]; 
+
+})
