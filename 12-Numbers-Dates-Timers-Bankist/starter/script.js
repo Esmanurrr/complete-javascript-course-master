@@ -96,15 +96,15 @@ const formatMovementDate = function (date, locale) {
   // const year = date.getFullYear();
 
   // return `${day}/${month}/${year}`;
-  return new Intl.DateTimeFormat(locale).format(date)
+  return new Intl.DateTimeFormat(locale).format(date);
 };
 
-const formatCur = function(value, locale, currency){
+const formatCur = function (value, locale, currency) {
   return new Intl.NumberFormat(locale, {
-    style:'currency',
-    currency: currency
+    style: 'currency',
+    currency: currency,
   }).format(value);
-}
+};
 
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
@@ -184,9 +184,36 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, '0');
+    const sec = String(Math.trunc(time % 60)).padStart(2, '0');
+    // in each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${sec}`;
+
+    // when 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer);
+      containerApp.style.opacity = 0;
+      labelWelcome.textContent = `Log in to get started`;
+    }
+
+    // decrease 1s
+    time--;
+  };
+
+  // set time to 5 minutes
+  let time = 120;
+
+  // call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 // FAKE ALWAYS LOGGED IN
 currentAccount = account1;
@@ -224,9 +251,10 @@ btnLogin.addEventListener('click', function (e) {
     // const locale = navigator.language;
     // console.log(locale);
 
-    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(
-      now
-    );
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options
+    ).format(now);
     // const day = `${now.getDate()}`.padStart(2, 0);
     // const month = `${now.getMonth() + 1}`.padStart(2, 0);
     // const year = now.getFullYear();
@@ -237,6 +265,11 @@ btnLogin.addEventListener('click', function (e) {
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    // timer
+    if (timer) clearInterval(timer);
+
+    timer = startLogOutTimer();
 
     // Update UI
     updateUI(currentAccount);
@@ -267,6 +300,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    // reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -276,17 +313,21 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    setTimeout(function(){
+    setTimeout(function () {
       // Add movement
-    currentAccount.movements.push(amount);
+      currentAccount.movements.push(amount);
 
-    // Add transfer date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add transfer date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
     }, 2500);
-  };
+
+    // reset timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
+  }
   inputLoanAmount.value = '';
 });
 
@@ -541,7 +582,6 @@ const day1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4));
 console.log(day1);
 */
 
-
 // ------------- OPERATIONS WITH NUMBERS -------------
 /*
 const num = 423422.23;
@@ -561,11 +601,11 @@ console.log(navigator.language, new Intl.NumberFormat('ar-SY', options).format(n
 */
 
 // ------------- TIMERS : setTimeout and setInterval -------------
-
-// setTimeout
+/*
+* setTimeout
 const ingredients = ['olives','spinach']
 
-// only excecuted once
+* only excecuted once
 const pizzaTimer = setTimeout((ing1, ing2) => {
   console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`)
 }, 3000, ...ingredients);
@@ -573,8 +613,10 @@ console.log("Waiting..");
 
 if(ingredients.includes('spinach')) clearTimeout (pizzaTimer);
 
-// setInterval
+* setInterval
 setInterval(function(){
   const now = new Date();
   console.log(now);
 }, 3000);
+
+*/
