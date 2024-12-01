@@ -294,6 +294,7 @@ btnSort.addEventListener('click', function (e) {
 
 // --------------- MATH AND ROUNDING ---------------
 
+/*
 console.log(Math.sqrt(25));
 console.log(25 ** (1/2));
 console.log(8 ** (1/3));
@@ -310,7 +311,7 @@ console.log(Math.trunc(Math.random() * 6) + 1);
 const randomInt = (min, max) => Math.floor(Math.random() * ((max-min) + 1) + min);
 console.log(randomInt(10,20));
 
-// Rounding integers
+* Rounding integers
 console.log(Math.round(23.3)); // 23
 console.log(Math.round(23.9)); // 24
 
@@ -325,8 +326,37 @@ console.log(Math.trunc(23.3));
 console.log(Math.trunc(-23.3)); // 23, not related with negativity
 console.log(Math.floor(-23.3)); // -24 (works correct)
 
-// Rounding decimals
+* Rounding decimals
 console.log((2.7).toFixed(0)); // 3 (string) - type coercion
 console.log((2.7).toFixed(3)); // 2.700 (string)
 console.log((2.345).toFixed(2)); // 2.35 (string)
 console.log(+(2.345).toFixed(2)); // 2.35 (number) 
+*/
+
+// ------------- THE REMAINDER OPERATOR -------------
+
+console.log(5 % 2); // 1
+console.log(5 / 2); // 2.5
+
+console.log(8 % 3); // 2
+console.log(8 / 3); // 2.6...
+
+console.log(6 % 2); // 0
+console.log(6 / 2); // 3
+
+console.log(7 % 2); // 1
+console.log(7 / 2); // 3.5
+
+const isEven = (num) => num % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener('click', function(){
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i){
+    // 0, 2, 4, 6
+    if(i % 2 === 0) row.style.backgroundColor = 'orangered';
+    // 0, 3, 6, 9
+    if(i % 3 === 0) row.style.backgroundColor = 'blue';
+  });
+});
