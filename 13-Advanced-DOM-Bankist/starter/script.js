@@ -163,7 +163,7 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({behavior: 'smooth'});
 });
 
-
+/*
 const h1 = document.querySelector('h1');
 
 const alertH1 = function(e){
@@ -174,7 +174,37 @@ const alertH1 = function(e){
 h1.addEventListener('mouseenter', alertH1);
 
 setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000)
+*/
 
 // h1.onmouseenter = function(e){
 //   alert('addEventListener: Great! You are reading the heading :D ');
 // };
+
+
+// ---------- EVENT PROPAGATION IN PRACTICE --------------
+
+// rgb(255, 255, 255)
+const randomInt = (min,max) => Math.floor(Math.random() * (max - min + 1) + 1);
+
+const randomColor = () => `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+// addeventlistener is in bubbling phase as a default
+document.querySelector('.nav__link').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor(); // 'tihs' is document.querySelector('.nav__link')
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this); // true
+
+
+  // Stop Propagation
+  // e.stopPropagation(); // only nav link change backgroundcolor
+});
+
+document.querySelector('.nav__links').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+}, false); // first in order in capturing if the third parameter is 'true' - but its very rarely
