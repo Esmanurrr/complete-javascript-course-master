@@ -128,10 +128,13 @@ logo.className = 'jonas';
 
 */
 
+// ------- IMPLEMENTING SMOOTH SCROLLING ---------
+
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
+  /*
   const s1coords = section1.getBoundingClientRect(); // coordinations of section 1
   console.log(s1coords);
 
@@ -145,17 +148,33 @@ btnScrollTo.addEventListener('click', function (e) {
     document.documentElement.clientWidth
   ); // current height and width of page
 
-  // Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset, // current position + current scroll
-  //   s1coords.top + window.pageYOffset
-  // ); // go to top and left of s1coords
+  Scrolling
+  window.scrollTo(
+    s1coords.left + window.pageXOffset, // current position + current scroll
+    s1coords.top + window.pageYOffset
+  ); // go to top and left of s1coords
 
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth'
-  // })
-
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset,
+    behavior: 'smooth'
+  })
+  */
   section1.scrollIntoView({behavior: 'smooth'});
 });
+
+
+const h1 = document.querySelector('h1');
+
+const alertH1 = function(e){
+  alert('addEventListener: Great! You are reading the heading :D ');
+
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000)
+
+// h1.onmouseenter = function(e){
+//   alert('addEventListener: Great! You are reading the heading :D ');
+// };
